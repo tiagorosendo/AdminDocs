@@ -1,5 +1,7 @@
-﻿Visão Geral do Admin Braspag 3.0
-===================================
+﻿.. include:: ../common/authors.txt
+
+Visão Geral do Admin Braspag
+============================
 
 Por `Ricardo Abdalla`_
 

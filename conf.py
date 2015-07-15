@@ -48,8 +48,8 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'Admin Docs'
-copyright = '2015, FrontEnd Team'
-author = 'FrontEnd Team'
+copyright = '2015, Braspag FrontEnd Team'
+author = 'Braspag FrontEnd Team'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the

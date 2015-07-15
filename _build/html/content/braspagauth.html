@@ -32,7 +32,7 @@
   
     <link rel="top" title="Admin Docs 3.0.0 documentation" href="../index.html"/>
         <link rel="next" title="Admin API" href="adminapi.html"/>
-        <link rel="prev" title="Visão Geral do Admin Braspag 3.0" href="overview.html"/> 
+        <link rel="prev" title="Visão Geral do Admin Braspag" href="overview.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -72,11 +72,29 @@
           
           
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="overview.html">Visão Geral do Admin Braspag 3.0</a><ul class="simple">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Visão Geral do Admin Braspag</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#o-que-e-x">O que é X?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#application-anatomy">Application anatomy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#teste-de-bloco">Teste de bloco</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#exemplo-de-imagem">Exemplo de Imagem</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Braspag Auth</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Braspag Auth</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introducao">Introdução</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#obtencao-de-autorizacao">Obtenção de Autorização</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tipos-de-permissao-grant-types">Tipos de Permissão (Grant Types)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#client-credentials">1. Client Credentials</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#resource-owner-password-credentials">2. Resource Owner Password Credentials</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="adminapi.html">Admin API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev/index.html">Recursos para Desenvolvedores</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dev/project.html">Estrutura do Projeto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/services.html">Serviços</a></li>
+</ul>
+</li>
 </ul>
 
           
@@ -116,6 +134,58 @@
             
   <div class="section" id="braspag-auth">
 <h1>Braspag Auth<a class="headerlink" href="#braspag-auth" title="Permalink to this headline">¶</a></h1>
+<p>Por <a class="reference external" href="mailto:dbraga&#37;&#52;&#48;braspag&#46;com&#46;br">Daniel Braga</a> e <a class="reference external" href="mailto:rabdalla&#37;&#52;&#48;braspag&#46;com&#46;br">Ricardo Abdalla</a></p>
+<div class="section" id="introducao">
+<h2>Introdução<a class="headerlink" href="#introducao" title="Permalink to this headline">¶</a></h2>
+<p><strong>Braspag Auth</strong> é o Serviço de Autorização da Braspag, implementado de acordo com as especificações do protocolo OAuth2. O objetivo deste serviço é prover fluxos de autorização
+específicos para aplicações web, aplicações desktop, dispositivos móveis, entre outros.</p>
+<p>A especificação do OAuth2 é definida pelo <a class="reference external" href="http://tools.ietf.org/html/rfc6749">RFC 6749</a>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">A versão 1.0 do Braspag Auth ainda não implementa os fluxos <em>Authorization Code</em> e <em>Implicit</em> especificados no OAuth2.</p>
+</div>
+</div>
+<div class="section" id="obtencao-de-autorizacao">
+<h2>Obtenção de Autorização<a class="headerlink" href="#obtencao-de-autorizacao" title="Permalink to this headline">¶</a></h2>
+<p>Para obter autorização de acesso aos recursos protegidos pelo Braspag Auth, é preciso informar na requisição HTTP o tipo de permissão desejada, além das credenciais de cliente. O servidor de autorização disponibiliza credenciais para seus clientes registrados.</p>
+<p>As credenciais de cliente são compostas por duas informações, <em>ClientId</em> e <em>ClientSecret</em>, únicas para cada cliente.</p>
+<p>Uma vez obtidos, <em>ClientId</em> e <em>ClientSecret</em> devem ser enviados como uma string única, codificada no formato Base64, no cabeçalho Authorization da requisição HTTP, conforme descrito abaixo:</p>
+<div class="highlight-HTTP"><div class="highlight"><pre>Authorization: Basic czZCaGRSa3F0Mzo3RmpmcDBaQnIxS3REUmJuZlZkbUl
+</pre></div>
+</div>
+<p>O processo de codificação em Base64 deve ser realizado sobre o texto formatado de acordo com o seguinte padrão:</p>
+<div class="highlight-HTTP"><div class="highlight"><pre>[ClientId]:[ClientSecret]
+</pre></div>
+</div>
+</div>
+<div class="section" id="tipos-de-permissao-grant-types">
+<h2>Tipos de Permissão (Grant Types)<a class="headerlink" href="#tipos-de-permissao-grant-types" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="client-credentials">
+<h3>1. Client Credentials<a class="headerlink" href="#client-credentials" title="Permalink to this headline">¶</a></h3>
+<p>No fluxo de permissão <code class="docutils literal"><span class="pre">Client</span> <span class="pre">Credentials</span></code>, o cliente requisita um token de acesso para um recurso protegido usando apenas as suas credenciais. Um escopo de validade para o token de acesso deve ser informado. Se as credenciais forem válidas, o token de acesso é emitido e o cliente pode então utilizá-lo para acessar o recurso protegido (por exemplo, alguma das APIs Braspag).</p>
+<p>Fluxo Client Credentials:</p>
+<blockquote>
+<div><img alt="../_images/client-credentials.png" src="../_images/client-credentials.png" />
+</div></blockquote>
+<p>Formato da requisição POST:</p>
+<div class="highlight-HTTP"><div class="highlight"><pre><span class="nf">POST</span> <span class="nn">https://admin.braspag.com.br/api/auth/v1/token</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">admin.braspag.com.br</span>
+<span class="na">Connection</span><span class="o">:</span> <span class="l">keep-alive</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">Basic NTY3N0M5RUItNERDQS00OTk3LTk1MUYtM0QxNzk3QzhGQTcwOlpJTVo0UlZVRUFVTk5FNlZHNGxuZTZESnJZWUZJdUpkaXF4VWZLUmhEN1BBUTVuYUZubFBJclg4SWVDc0hlamM=</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/x-www-form-urlencoded</span>
+<span class="na">Accept</span><span class="o">:</span> <span class="l">*/*</span>
+<span class="na">Accept-Encoding</span><span class="o">:</span> <span class="l">gzip, deflate</span>
+<span class="na">Accept-Language</span><span class="o">:</span> <span class="l">pt,en-US;q=0.8,en;q=0.6</span>
+
+grant_type=client_credentials&amp;scope=[Escopo]
+</pre></div>
+</div>
+</div>
+<div class="section" id="resource-owner-password-credentials">
+<h3>2. Resource Owner Password Credentials<a class="headerlink" href="#resource-owner-password-credentials" title="Permalink to this headline">¶</a></h3>
+<p>Texto.</p>
+</div>
+</div>
 </div>
 
 
@@ -127,7 +197,7 @@
         <a href="adminapi.html" class="btn btn-neutral float-right" title="Admin API" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="overview.html" class="btn btn-neutral" title="Visão Geral do Admin Braspag 3.0" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="overview.html" class="btn btn-neutral" title="Visão Geral do Admin Braspag" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -136,7 +206,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2015, FrontEnd Team.
+        &copy; Copyright 2015, Braspag FrontEnd Team.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.

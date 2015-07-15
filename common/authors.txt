@@ -1,1 +1,4 @@
-.. _Ricardo Abdalla: https://github.com/danroth27
+﻿.. _Daniel Braga: mailto:dbraga@braspag.com.br
+.. _Diogo Mello: mailto:dmello@braspag.com.br
+.. _Diogo Marins: mailto:dmarins@braspag.com.br
+.. _Ricardo Abdalla: mailto:rabdalla@braspag.com.br

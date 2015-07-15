@@ -3,23 +3,18 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Documentação Braspag Admin 3.0
+Documentação Braspag Admin 3.x
 ==============================
 
-Conteúdo:
+Tópicos:
 
 .. toctree::
-   :titlesonly:
+   :maxdepth: 2
 
    content/overview
    content/braspagauth
    content/adminapi
-
-
-.. 	Indices and tables
-	==================
-
-	* :ref:`genindex`
-	* :ref:`modindex`
-	* :ref:`search`
+   dev/index
+	
+.. include:: ./common/authors.txt
 
