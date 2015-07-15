@@ -11,14 +11,15 @@ Conteúdo:
 .. toctree::
    :titlesonly:
 
-   overview
-   api/index
+   content/overview
+   content/braspagauth
+   content/adminapi
 
 
-Indices and tables
-==================
+.. 	Indices and tables
+	==================
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+	* :ref:`genindex`
+	* :ref:`modindex`
+	* :ref:`search`
 

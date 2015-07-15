@@ -1,4 +1,4 @@
-﻿Overview of ASP.NET MVC
+﻿Visão Geral do Admin Braspag 3.0
 ===================================
 
 Por `Ricardo Abdalla`_
@@ -44,5 +44,5 @@ Exemplo de Imagem
 
 
 	
-	.. image:: ./images/cielo-acesso-direto.png
+	.. image:: ../images/cielo-acesso-direto.png
 	
