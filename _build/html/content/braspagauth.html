@@ -168,10 +168,9 @@ específicos para aplicações web, aplicações desktop, dispositivos móveis, 
 <div><img alt="../_images/client-credentials.png" src="../_images/client-credentials.png" />
 </div></blockquote>
 <p>Formato da requisição POST:</p>
-<div class="highlight-HTTP"><div class="highlight"><pre><span class="nf">POST</span> <span class="nn">https://admin.braspag.com.br/api/auth/v1/token</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">admin.braspag.com.br</span>
+<div class="highlight-HTTP"><div class="highlight"><pre><span class="nf">POST</span> <span class="nn">https://{braspag.url}/api/auth/v1/token</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Connection</span><span class="o">:</span> <span class="l">keep-alive</span>
-<span class="na">Authorization</span><span class="o">:</span> <span class="l">Basic NTY3N0M5RUItNERDQS00OTk3LTk1MUYtM0QxNzk3QzhGQTcwOlpJTVo0UlZVRUFVTk5FNlZHNGxuZTZESnJZWUZJdUpkaXF4VWZLUmhEN1BBUTVuYUZubFBJclg4SWVDc0hlamM=</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">Basic NTY3N0M5RUItNERDUpkaXF4VWZLUmhEN1BBUTVuYUZubFBJclg4SWVDc0hlamM=</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/x-www-form-urlencoded</span>
 <span class="na">Accept</span><span class="o">:</span> <span class="l">*/*</span>
 <span class="na">Accept-Encoding</span><span class="o">:</span> <span class="l">gzip, deflate</span>
@@ -180,10 +179,54 @@ específicos para aplicações web, aplicações desktop, dispositivos móveis, 
 grant_type=client_credentials&amp;scope=[Escopo]
 </pre></div>
 </div>
+<p>Formato da resposta:</p>
+<div class="highlight-HTTP"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+<span class="na">Connection</span><span class="o">:</span> <span class="l">close</span>
+
+<span class="p">{</span>
+<span class="nt">&quot;access_token&quot;</span><span class="p">:</span><span class="s2">&quot;99997e6d97fe4a99933dd7b1b88dee3f&quot;</span><span class="p">,</span>
+<span class="nt">&quot;token_type&quot;</span><span class="p">:</span><span class="s2">&quot;Bearer&quot;</span><span class="p">,</span>
+<span class="nt">&quot;expires_in&quot;</span><span class="p">:</span><span class="mi">3600</span><span class="p">,</span>
+<span class="nt">&quot;scope&quot;</span><span class="p">:</span><span class="s2">&quot;[Escopo]&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="resource-owner-password-credentials">
 <h3>2. Resource Owner Password Credentials<a class="headerlink" href="#resource-owner-password-credentials" title="Permalink to this headline">¶</a></h3>
-<p>Texto.</p>
+<p>No fluxo de permissão <code class="docutils literal"><span class="pre">Resource</span> <span class="pre">Owner</span> <span class="pre">Password</span> <span class="pre">Credentials</span></code>, além das credenciais do cliente (<em>ClientId</em> e <em>ClientSecret</em>), também são informados as credenciais de um usuário (nome de usuário e senha), que são trocadas por um token de acesso e um token de atualização (<em>refresh_token</em>). O acesso realizado com o uso do token será feito em nome do usuário cujas credenciais foram previamente informadas.</p>
+<p>Por que a senha do proprietário do recurso é exposta à aplicação, este fluxo deve ser utilizado apenas em situações onde há um grande grau de confiança entre a aplicação e o provedor da API de autorização. Em outras palavras, seu uso deve ser restrito apenas à aplicações no domínio Braspag.</p>
+<p>Fluxo Resource Owner Password Credentials:</p>
+<blockquote>
+<div><img alt="../_images/resource-owner.png" src="../_images/resource-owner.png" />
+</div></blockquote>
+<p>Formato da requisição POST:</p>
+<div class="highlight-HTTP"><div class="highlight"><pre><span class="nf">POST</span> <span class="nn">https://{braspag.url}/api/auth/v1/token</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Connection</span><span class="o">:</span> <span class="l">keep-alive</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">Basic NTY3N0M5RUItNERDUpkaXF4VWZLUmhEN1BBUTVuYUZubFBJclg4SWVDc0hlamM=</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/x-www-form-urlencoded</span>
+<span class="na">Accept</span><span class="o">:</span> <span class="l">*/*</span>
+<span class="na">Accept-Encoding</span><span class="o">:</span> <span class="l">gzip, deflate</span>
+<span class="na">Accept-Language</span><span class="o">:</span> <span class="l">pt,en-US;q=0.8,en;q=0.6</span>
+
+grant_type=password&amp;username=[Usuario]&amp;password=[Senha]&amp;scope=[Escopo]
+</pre></div>
+</div>
+<p>Formato da resposta:</p>
+<div class="highlight-HTTP"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+<span class="na">Connection</span><span class="o">:</span> <span class="l">close</span>
+
+<span class="p">{</span>
+<span class="nt">&quot;access_token&quot;</span><span class="p">:</span><span class="s2">&quot;99997e6d97fe4a99933dd7b1b88dee3f&quot;</span><span class="p">,</span>
+<span class="nt">&quot;token_type&quot;</span><span class="p">:</span><span class="s2">&quot;Bearer&quot;</span><span class="p">,</span>
+<span class="nt">&quot;expires_in&quot;</span><span class="p">:</span><span class="mi">3600</span><span class="p">,</span>
+<span class="nt">&quot;refresh_token&quot;</span><span class="p">:</span><span class="s2">&quot;9999886d97999999999dd7b1b88d8888&quot;</span><span class="p">,</span>
+<span class="nt">&quot;scope&quot;</span><span class="p">:</span><span class="s2">&quot;[Escopo]&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>
