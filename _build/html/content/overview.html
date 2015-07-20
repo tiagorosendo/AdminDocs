@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Visão Geral do Admin Braspag &mdash; Admin Docs 3.0.0 documentation</title>
+  <title>Visão Geral &mdash; Admin API Docs 3.0.0 documentation</title>
   
 
   
@@ -30,9 +30,9 @@
   
 
   
-    <link rel="top" title="Admin Docs 3.0.0 documentation" href="../index.html"/>
+    <link rel="top" title="Admin API Docs 3.0.0 documentation" href="../index.html"/>
         <link rel="next" title="Braspag Auth" href="braspagauth.html"/>
-        <link rel="prev" title="Documentação Braspag Admin 3.x" href="../index.html"/> 
+        <link rel="prev" title="Documentação Braspag Admin APIs 3.x" href="../index.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -49,7 +49,7 @@
         
 
         
-          <a href="../index.html" class="icon icon-home"> Admin Docs
+          <a href="../index.html" class="icon icon-home"> Admin API Docs
         
 
         
@@ -72,13 +72,7 @@
           
           
               <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="">Visão Geral do Admin Braspag</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#o-que-e-x">O que é X?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#application-anatomy">Application anatomy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#teste-de-bloco">Teste de bloco</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#exemplo-de-imagem">Exemplo de Imagem</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Visão Geral</a></li>
 <li class="toctree-l1"><a class="reference internal" href="braspagauth.html">Braspag Auth</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="braspagauth.html#introducao">Introdução</a></li>
 <li class="toctree-l2"><a class="reference internal" href="braspagauth.html#obtencao-de-autorizacao">Obtenção de Autorização</a></li>
@@ -108,7 +102,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../index.html">Admin Docs</a>
+        <a href="../index.html">Admin API Docs</a>
       </nav>
 
 
@@ -119,7 +113,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../index.html">Docs</a> &raquo;</li>
       
-    <li>Visão Geral do Admin Braspag</li>
+    <li>Visão Geral</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -132,45 +126,20 @@
 </div>
           <div role="main" class="document">
             
-  <div class="section" id="visao-geral-do-admin-braspag">
-<h1>Visão Geral do Admin Braspag<a class="headerlink" href="#visao-geral-do-admin-braspag" title="Permalink to this headline">¶</a></h1>
-<p>Por <a class="reference external" href="mailto:rabdalla&#37;&#52;&#48;braspag&#46;com&#46;br">Ricardo Abdalla</a></p>
-<div class="section" id="o-que-e-x">
-<h2>O que é X?<a class="headerlink" href="#o-que-e-x" title="Permalink to this headline">¶</a></h2>
-<p>Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos. Lorem Ipsum sobreviveu não só a cinco séculos, como também ao salto para a editoração eletrônica, permanecendo essencialmente inalterado. Se popularizou na década de 60, quando a Letraset lançou decalques contendo passagens de Lorem Ipsum, e mais recentemente quando passou a ser integrado a softwares de editoração eletrônica como Aldus PageMaker.</p>
-</div>
-<div class="section" id="application-anatomy">
-<h2>Application anatomy<a class="headerlink" href="#application-anatomy" title="Permalink to this headline">¶</a></h2>
-<p>ASP.NET 5 applications are built and run using the new <code class="xref doc docutils literal"><span class="pre">.NET</span> <span class="pre">Execution</span> <span class="pre">Environment</span> <span class="pre">(DNX)</span></code>. Every ASP.NET 5 project is a <code class="xref doc docutils literal"><span class="pre">DNX</span> <span class="pre">project</span></code>. ASP.NET 5 integrates with DNX through the <a class="reference external" href="https://nuget.org/packages/Microsoft.AspNet.Hosting">ASP.NET Application Hosting</a> package.</p>
-<p>Teste de link: <a class="reference external" href="http://www.microsoft.com">MICROSOFT</a></p>
-<p>ASP.NET 5 applications are defined using a public <code class="docutils literal"><span class="pre">Startup</span></code> class:</p>
-<div class="highlight-c#"><div class="highlight"><pre><span class="k">public</span> <span class="k">class</span> <span class="nc">Startup</span>
-<span class="p">{</span>
-     <span class="k">public</span> <span class="k">void</span> <span class="nf">ConfigureServices</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">services</span><span class="p">)</span>
-     <span class="p">{</span>
-     <span class="p">}</span>
-
-     <span class="k">public</span> <span class="k">void</span> <span class="nf">Configure</span><span class="p">(</span><span class="n">IApplicationBuilder</span> <span class="n">app</span><span class="p">)</span>
-     <span class="p">{</span>
-     <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>The <code class="docutils literal"><span class="pre">ConfigureServices</span></code> method defines the services used by your application and the <code class="docutils literal"><span class="pre">Configure</span></code> method is used to define what middleware makes up your request pipeline. See <code class="xref doc docutils literal"><span class="pre">understanding-aspnet5-apps</span></code> for more details.</p>
-</div>
-<div class="section" id="teste-de-bloco">
-<h2>Teste de bloco<a class="headerlink" href="#teste-de-bloco" title="Permalink to this headline">¶</a></h2>
-<p>Exemplo de bloco:</p>
-<div class="highlight-python"><div class="highlight"><pre>.. image:: gnu.png
-</pre></div>
-</div>
-</div>
-<div class="section" id="exemplo-de-imagem">
-<h2>Exemplo de Imagem<a class="headerlink" href="#exemplo-de-imagem" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><img alt="../_images/cielo-acesso-direto.png" src="../_images/cielo-acesso-direto.png" />
-</div></blockquote>
-</div>
+  <div class="section" id="visao-geral">
+<h1>Visão Geral<a class="headerlink" href="#visao-geral" title="Permalink to this headline">¶</a></h1>
+<p>As APIs REST fornecidas pelo Admin 3.x permitem executar, de forma programática,
+tarefas administrativas que, até então, eram executadas somente pela interface de usuário.</p>
+<p>Algumas destas tarefas são listadas abaixo:</p>
+<ul class="simple">
+<li>Cadastro de Estabelecimentos Comerciais WebService/Checkout</li>
+<li>Acesso aos dados de lojas do Pagador (<em>em breve</em>)</li>
+<li>Cadastro de Usuários (<em>em breve</em>)</li>
+</ul>
+<p><strong>Admin API</strong> é composta pelas funcionalidades de negócio descritas acima.</p>
+<p><strong>Braspag Auth</strong> é a API que implementa o Serviço de Autorização necessário para garantir a segurança no consumo da Admin API, através da criação e validação de tokens de acesso com escopo e
+duração limitados.</p>
+<p>Tokens de acesso precisam ser obtidos para garantir acesso as APIs de negócio e também para utilização de recursos de <em>Single Sign-On</em> entre aplicativos e sites dentro do domínio Braspag / Cielo.</p>
 </div>
 
 
@@ -182,7 +151,7 @@
         <a href="braspagauth.html" class="btn btn-neutral float-right" title="Braspag Auth" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../index.html" class="btn btn-neutral" title="Documentação Braspag Admin 3.x" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../index.html" class="btn btn-neutral" title="Documentação Braspag Admin APIs 3.x" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

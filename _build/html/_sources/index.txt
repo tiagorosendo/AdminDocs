@@ -3,8 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Documentação Braspag Admin 3.x
-==============================
+Documentação Braspag Admin APIs 3.x
+===================================
 
 Tópicos:
 
@@ -15,6 +15,5 @@ Tópicos:
    content/braspagauth
    content/adminapi
    dev/index
-	
-.. include:: ./common/authors.txt
 
+.. include:: ./common/authors.txt

@@ -47,7 +47,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'Admin Docs'
+project = 'Admin API Docs'
 copyright = '2015, Braspag FrontEnd Team'
 author = 'Braspag FrontEnd Team'
 

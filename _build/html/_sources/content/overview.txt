@@ -1,50 +1,20 @@
 ﻿.. include:: ../common/authors.txt
 
-Visão Geral do Admin Braspag
-============================
+Visão Geral
+===========
 
-Por `Ricardo Abdalla`_
+As APIs REST fornecidas pelo Admin 3.x permitem executar, de forma programática,
+tarefas administrativas que, até então, eram executadas somente pela interface de usuário.
 
-O que é X?
-----------
+Algumas destas tarefas são listadas abaixo:
 
-Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos. Lorem Ipsum sobreviveu não só a cinco séculos, como também ao salto para a editoração eletrônica, permanecendo essencialmente inalterado. Se popularizou na década de 60, quando a Letraset lançou decalques contendo passagens de Lorem Ipsum, e mais recentemente quando passou a ser integrado a softwares de editoração eletrônica como Aldus PageMaker.
+* Cadastro de Estabelecimentos Comerciais WebService/Checkout
+* Acesso aos dados de lojas do Pagador (*em breve*)
+* Cadastro de Usuários (*em breve*)
 
-Application anatomy
--------------------
+**Admin API** é composta pelas funcionalidades de negócio descritas acima.
 
-ASP.NET 5 applications are built and run using the new :doc:`.NET Execution Environment (DNX) </dnx/overview>`. Every ASP.NET 5 project is a :doc:`DNX project </dnx/projects>`. ASP.NET 5 integrates with DNX through the `ASP.NET Application Hosting <https://nuget.org/packages/Microsoft.AspNet.Hosting>`_ package.
+**Braspag Auth** é a API que implementa o Serviço de Autorização necessário para garantir a segurança no consumo da Admin API, através da criação e validação de tokens de acesso com escopo e
+duração limitados.
 
-Teste de link: `MICROSOFT <http://www.microsoft.com>`_
-
-ASP.NET 5 applications are defined using a public ``Startup`` class:
-
-.. code-block:: c#
-
-    public class Startup
-    {
-         public void ConfigureServices(IServiceCollection services)
-         {
-         }
-
-         public void Configure(IApplicationBuilder app)
-         {
-         }
-    }
-
-The ``ConfigureServices`` method defines the services used by your application and the ``Configure`` method is used to define what middleware makes up your request pipeline. See :doc:`understanding-aspnet5-apps` for more details.
-
-Teste de bloco
---------------
-
-Exemplo de bloco::
-
-	.. image:: gnu.png
-	
-Exemplo de Imagem
------------------
-
-
-	
-	.. image:: ../images/cielo-acesso-direto.png
-	
+Tokens de acesso precisam ser obtidos para garantir acesso as APIs de negócio e também para utilização de recursos de *Single Sign-On* entre aplicativos e sites dentro do domínio Braspag / Cielo.
