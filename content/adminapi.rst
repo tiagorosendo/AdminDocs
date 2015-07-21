@@ -101,7 +101,7 @@ Contrato JSON para criação de EC
    <a href="https://adminhomolog.braspag.com.br/swagger/ui/index#!/Ec/Ec_Post" target="_blank">clique aqui</a>
 
 Valores válidos para os tipos de integração
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ========   =======================================
 Código     IntegrationType
