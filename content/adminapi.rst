@@ -100,18 +100,6 @@ Contrato JSON para criação de EC
 
    <a href="https://adminhomolog.braspag.com.br/swagger/ui/index#!/Ec/Ec_Post" target="_blank">clique aqui</a>
 
-Códigos de Retorno HTTP
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-===========================   =======================================
-Código HTTP                   Resultado
-===========================   =======================================
-201 Created                   EC criado com sucesso
-400 Bad Request               Contrato inválido / Erro de validação
-401 Unauthorized              Cliente não autenticado
-500 Internal Server Error     Erro interno no servidor
-===========================   =======================================
-
 Valores válidos para os tipos de integração
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -126,6 +114,18 @@ Código     IntegrationType
 36         Checkout Completo e WebService 3.0
 56         Loja Virtual Completa e WebService 3.0
 ========   =======================================
+
+Códigos de Retorno HTTP
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+===========================   =======================================
+Código HTTP                   Resultado
+===========================   =======================================
+201 Created                   EC criado com sucesso
+400 Bad Request               Contrato inválido / Erro de validação
+401 Unauthorized              Cliente não autenticado
+500 Internal Server Error     Erro interno no servidor
+===========================   =======================================
 
 
 2. Atualização de EC
@@ -147,3 +147,66 @@ Formato da requisição PUT
 	Accept-Language: pt,en-US;q=0.8,en;q=0.6
 
 	{ }
+
+Contrato JSON para atualização de EC
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. note::
+
+	Os comentários no código abaixo são meramente explicativos e não devem ser enviados com o contrato.
+
+.. code-block:: javascript
+
+  {
+    /* Dados gerais do EC, obrigatório */
+    "GeneralData": {
+      "Email": "string", /* Endereço de email, máximo 60 caracteres */
+      "DocumentType": 0, /* 0 = Pessoa Jurídica, 1 = Pessoa Física */
+      "ContactName": "string", /* Nome do contato, máximo 60 caracteres */
+      "Phone": "string", /* Telefone do EC, formato '(99) 99999-9999', máximo 16 caracteres */
+			"IsBlocked": true
+    },
+    /* Dados da Empresa, obrigatório apenas se Pessoa Jurídica */
+    "CompanyData": {
+      "FancyName": "string", /* Nome Fantasia, máximo 128 caracteres */
+      "CorporateName": "string", /* Razão Social, máximo 128 caracteres */
+      "Cnpj": "string" /* Número do CNPJ, formato '99.999.999/9999-99', máximo 16 caracteres */
+    },
+    /* Dados do Cliente, obrigatório apenas se Pessoa Física */
+    "PersonalData": {
+      "FullName": "string", /* Nome completo, máximo 128 caracteres */
+      "Cpf": "string" /* Número do CPF, formato '999.999.999-99', máximo 14 caracteres */
+    },
+    /* Endereço Comercial, obrigatório */
+    "BusinessAddress": {
+      "ZipCode": "string", /* CEP, formato '99999-99', máximo 9 caracteres */
+      "Address": "string", /* Logradouro, máximo 100 caracteres */
+      "Number": "string", /* Número, máximo 5 caracteres */
+      "Complement": "string", /* Complemento, campo opcional, máximo 50 caracteres */
+      "District": "string", /* Bairro, máximo 32 caracteres */
+      "City": "string", /* Cidade, máximo 32 caracteres */
+      "State": "string" /* Estado/UF, máximo 4 caracteres */
+    },
+    /* Informações transacionais, obrigatório */
+    "TransactionalConfiguration": {
+      "ProductionKey": "string", /* Chave de Produção, máximo 64 caracteres */
+      "Mcc": "string", /* Código do MCC Cielo, máximo 4 caracteres */
+      "PaymentMethods": /* Array de meios de pagamento habilitados */
+      [
+        {
+          "Name": "string", /* Nome do Produto/Bandeira, máximo 16 caracteres */
+          "MaxInstallments": "string" /* Número de parcelas (1 a 12) */
+        }
+      ],
+      "CvvRequired": true, /* Obrigatoriedade do código de segurança, formato: true/false  */
+      "IntegrationType": 0 /* Tipo de integração do EC (ver tabela abaixo) */
+    }
+  }
+
+.. seealso::
+
+	Definição do contrato de atualização de EC: |swagger_put_ec|.
+
+.. |swagger_put_ec| raw:: html
+
+   <a href="https://adminhomolog.braspag.com.br/swagger/ui/index#!/Ec/Ec_Put" target="_blank">clique aqui</a>
