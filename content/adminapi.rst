@@ -100,6 +100,18 @@ Contrato JSON para criação de EC
 
    <a href="https://adminhomolog.braspag.com.br/swagger/ui/index#!/Ec/Ec_Post" target="_blank">clique aqui</a>
 
+Códigos de Retorno HTTP
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+===========================   =======================================
+Código HTTP                   Resultado
+===========================   =======================================
+201 Created                   EC criado com sucesso
+400 Bad Request               Contrato inválido / Erro de validação
+401 Unauthorized              Cliente não autenticado
+500 Internal Server Error     Erro interno no servidor
+===========================   =======================================
+
 Valores válidos para os tipos de integração
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -118,3 +130,20 @@ Código     IntegrationType
 
 2. Atualização de EC
 --------------------
+
+Atualiza as informações de um EC Cielo (WebService 3, Checkout Completo ou Loja Virtual) no ambiente Braspag.
+
+Formato da requisição PUT
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: HTTP
+
+	PUT https://{braspag_url}/api/v1/ec/?EcNumber={ecNumber} HTTP/1.1
+	Connection: keep-alive
+	Authorization: Bearer 974bd09d6992422183b970cc8343cc9a
+	Content-Type: application/json
+	Accept: */*
+	Accept-Encoding: gzip, deflate
+	Accept-Language: pt,en-US;q=0.8,en;q=0.6
+
+	{ }

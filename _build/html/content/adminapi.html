@@ -88,10 +88,14 @@
 <li class="toctree-l3"><a class="reference internal" href="#criacao-de-ec">1. Criação de EC</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#formato-da-requisicao-post">Formato da requisição POST</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#contrato-json-para-criacao-de-ec">Contrato JSON para criação de EC</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#codigos-de-retorno-http">Códigos de Retorno HTTP</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#valores-validos-para-os-tipos-de-integracao">Valores válidos para os tipos de integração</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#atualizacao-de-ec">2. Atualização de EC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#atualizacao-de-ec">2. Atualização de EC</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#formato-da-requisicao-put">Formato da requisição PUT</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -220,6 +224,34 @@
 <p class="last">Definição do contrato de criação de EC: <a href="https://adminhomolog.braspag.com.br/swagger/ui/index#!/Ec/Ec_Post" target="_blank">clique aqui</a>.</p>
 </div>
 </div>
+<div class="section" id="codigos-de-retorno-http">
+<h4>Códigos de Retorno HTTP<a class="headerlink" href="#codigos-de-retorno-http" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="41%" />
+<col width="59%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Código HTTP</th>
+<th class="head">Resultado</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>201 Created</td>
+<td>EC criado com sucesso</td>
+</tr>
+<tr class="row-odd"><td>400 Bad Request</td>
+<td>Contrato inválido</td>
+</tr>
+<tr class="row-even"><td>401 Unauthorized</td>
+<td>Cliente não autenticado</td>
+</tr>
+<tr class="row-odd"><td>500 Internal Server Error</td>
+<td>Erro interno no servidor</td>
+</tr>
+</tbody>
+</table>
+</div>
 <div class="section" id="valores-validos-para-os-tipos-de-integracao">
 <h4>Valores válidos para os tipos de integração<a class="headerlink" href="#valores-validos-para-os-tipos-de-integracao" title="Permalink to this headline">¶</a></h4>
 <table border="1" class="docutils">
@@ -260,6 +292,21 @@
 </div>
 <div class="section" id="atualizacao-de-ec">
 <h3>2. Atualização de EC<a class="headerlink" href="#atualizacao-de-ec" title="Permalink to this headline">¶</a></h3>
+<p>Atualiza as informações de um EC Cielo (WebService 3, Checkout Completo ou Loja Virtual) no ambiente Braspag.</p>
+<div class="section" id="formato-da-requisicao-put">
+<h4>Formato da requisição PUT<a class="headerlink" href="#formato-da-requisicao-put" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-HTTP"><div class="highlight"><pre><span class="nf">PUT</span> <span class="nn">https://{braspag_url}/api/v1/ec/?EcNumber={ecNumber}</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Connection</span><span class="o">:</span> <span class="l">keep-alive</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer 974bd09d6992422183b970cc8343cc9a</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Accept</span><span class="o">:</span> <span class="l">*/*</span>
+<span class="na">Accept-Encoding</span><span class="o">:</span> <span class="l">gzip, deflate</span>
+<span class="na">Accept-Language</span><span class="o">:</span> <span class="l">pt,en-US;q=0.8,en;q=0.6</span>
+
+<span class="p">{</span> <span class="p">}</span>
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 </div>
