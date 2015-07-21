@@ -35,7 +35,7 @@ Formato da requisição POST
 	Accept-Encoding: gzip, deflate
 	Accept-Language: pt,en-US;q=0.8,en;q=0.6
 
-	{ contrato_json }
+	{ }
 
 Contrato JSON para criação de EC
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -92,15 +92,29 @@ Contrato JSON para criação de EC
     }
   }
 
-Definição do contrato de criação de EC: |swagger_post_ec|.
+.. seealso::
+
+	Definição do contrato de criação de EC: |swagger_post_ec|.
 
 .. |swagger_post_ec| raw:: html
 
    <a href="https://adminhomolog.braspag.com.br/swagger/ui/index#!/Ec/Ec_Post" target="_blank">clique aqui</a>
 
+Valores válidos para os tipos de integração
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+========   =======================================
+Código     IntegrationType
+========   =======================================
+2          Checkout Simplificado
+3          Checkout Completo
+5          Loja Virtual Completa
+6          Webservice 3.0
+26         Checkout Simplificado e WebService 3.0
+36         Checkout Completo e WebService 3.0
+56         Loja Virtual Completa e WebService 3.0
+========   =======================================
+
+
 2. Atualização de EC
 --------------------
-
-
-Atualização de Estabelecimento Comercial
-========================================
