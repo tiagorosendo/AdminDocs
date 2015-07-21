@@ -22,7 +22,7 @@ Os passos a serem efetuados são descritos a seguir:
 
 Cria um EC Cielo (WebService 3, Checkout Completo ou Loja Virtual) no ambiente Braspag.
 
-Formato da requisição POST:
+Formato da requisição POST
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: HTTP
@@ -37,59 +37,66 @@ Formato da requisição POST:
 
 	{ contrato_json }
 
-Contrato JSON para criação de EC:
+Contrato JSON para criação de EC
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. note::
 
-	Os comentários no código abaixo são meramente explicativos e não devem ser enviados com o contrato
+	Os comentários no código abaixo são meramente explicativos e não devem ser enviados com o contrato.
 
 .. code-block:: javascript
 
   {
     /* Dados gerais do EC, obrigatório */
     "GeneralData": {
-      "Email": "string",
+      "Email": "string", /* Endereço de email, máximo 60 caracteres */
       "DocumentType": 0, /* 0 = Pessoa Jurídica, 1 = Pessoa Física */
-      "ContactName": "string",
-      "Phone": "string"
+      "ContactName": "string", /* Nome do contato, máximo 60 caracteres */
+      "Phone": "string" /* Telefone do EC, formato '(99) 99999-9999', máximo 16 caracteres */
     },
-    /* Obrigatório apenas se Pessoa Jurídica */
+    /* Dados da Empresa, obrigatório apenas se Pessoa Jurídica */
     "CompanyData": {
-      "FancyName": "string",
-      "CorporateName": "string",
-      "Cnpj": "string"
+      "FancyName": "string", /* Nome Fantasia, máximo 128 caracteres */
+      "CorporateName": "string", /* Razão Social, máximo 128 caracteres */
+      "Cnpj": "string" /* Número do CNPJ, formato '99.999.999/9999-99', máximo 16 caracteres */
     },
-    /* Obrigatório apenas se Pessoa Física */
+    /* Dados do Cliente, obrigatório apenas se Pessoa Física */
     "PersonalData": {
-      "FullName": "string",
-      "Cpf": "string"
+      "FullName": "string", /* Nome completo, máximo 128 caracteres */
+      "Cpf": "string" /* Número do CPF, formato '999.999.999-99', máximo 14 caracteres */
     },
     /* Endereço Comercial, obrigatório */
     "BusinessAddress": {
-      "ZipCode": "string",
-      "Address": "string",
-      "Number": "string",
-      "Complement": "string",
-      "District": "string",
-      "City": "string",
-      "State": "string"
+      "ZipCode": "string", /* CEP, formato '99999-99', máximo 9 caracteres */
+      "Address": "string", /* Logradouro, máximo 100 caracteres */
+      "Number": "string", /* Número, máximo 5 caracteres */
+      "Complement": "string", /* Complemento, campo opcional, máximo 50 caracteres */
+      "District": "string", /* Bairro, máximo 32 caracteres */
+      "City": "string", /* Cidade, máximo 32 caracteres */
+      "State": "string" /* Estado/UF, máximo 4 caracteres */
     },
     /* Informações transacionais, obrigatório */
     "TransactionalConfiguration": {
-      "Ec": "string",
-      "ProductionKey": "string",
-      "Mcc": "string",
-      "PaymentMethods": [
+      "Ec": "string", /* Número do EC na Cielo, máximo 16 caracteres */
+      "ProductionKey": "string", /* Chave de Produção, máximo 64 caracteres */
+      "Mcc": "string", /* Código do MCC Cielo, máximo 4 caracteres */
+      "PaymentMethods": /* Array de meios de pagamento habilitados */
+      [
         {
-          "Name": "string",
-          "MaxInstallments": "string"
+          "Name": "string", /* Nome do Produto/Bandeira, máximo 16 caracteres */
+          "MaxInstallments": "string" /* Número de parcelas (1 a 12) */
         }
       ],
-      "CvvRequired": true,
-      "IntegrationType": 0
+      "CvvRequired": true, /* Obrigatoriedade do código de segurança, formato: true/false  */
+      "IntegrationType": 0 /* Tipo de integração do EC (ver tabela abaixo) */
     }
   }
+
+Definição do contrato de criação de EC: |swagger_post_ec|.
+
+.. |swagger_post_ec| raw:: html
+
+   <a href="https://adminhomolog.braspag.com.br/swagger/ui/index#!/Ec/Ec_Post" target="_blank">clique aqui</a>
 
 2. Atualização de EC
 --------------------
