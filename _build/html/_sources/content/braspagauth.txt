@@ -37,6 +37,10 @@ O processo de codificação em Base64 deve ser realizado sobre o texto formatado
 
 	[ClientId]:[ClientSecret]
 
+.. warning::
+
+	*ClientId* e *ClientSecret* são informações sensíveis que compõem uma credencial única por cliente, não devendo, portanto, serem fornecidas a terceiros. 
+
 Tipos de Permissão (Grant Types)
 ================================
 
@@ -53,7 +57,7 @@ Formato da requisição POST:
 
 .. code-block:: HTTP
 
-	POST https://{braspag.url}/api/auth/v1/token HTTP/1.1
+	POST https://{braspag_url}/api/auth/v1/token HTTP/1.1
 	Connection: keep-alive
 	Authorization: Basic NTY3N0M5RUItNERDUpkaXF4VWZLUmhEN1BBUTVuYUZubFBJclg4SWVDc0hlamM=
 	Content-Type: application/x-www-form-urlencoded
@@ -93,7 +97,7 @@ Formato da requisição POST:
 
 .. code-block:: HTTP
 
-	POST https://{braspag.url}/api/auth/v1/token HTTP/1.1
+	POST https://{braspag_url}/api/auth/v1/token HTTP/1.1
 	Connection: keep-alive
 	Authorization: Basic NTY3N0M5RUItNERDUpkaXF4VWZLUmhEN1BBUTVuYUZubFBJclg4SWVDc0hlamM=
 	Content-Type: application/x-www-form-urlencoded
@@ -118,3 +122,41 @@ Formato da resposta:
 	"refresh_token":"9999886d97999999999dd7b1b88d8888",
 	"scope":"[Escopo]"
 	}
+
+Validação de Token
+==================
+
+Para aplicativos que precisam validar se um determinado token de acesso existe, não está expirado e possui o escopo
+adequado, **Braspag Auth** oferece a operação ``Validate``. A operação deve ser chamada através de uma requisição GET,
+informando *{token_a_ser_validado}* como parâmetro na URL. A requisição deve possuir ainda *{token_de_acesso_valido}* no cabeçalho Authorization, conforme exemplificado abaixo:
+
+Formato da requisição GET:
+
+.. code-block:: HTTP
+
+	GET https://{braspag_url}/api/auth/v1/token/{token_a_ser_validado} HTTP/1.1
+	Connection: keep-alive
+	Authorization: Bearer {token_de_acesso_valido}
+	Content-Type: application/x-www-form-urlencoded
+	Accept: */*
+	Accept-Encoding: gzip, deflate
+	Accept-Language: pt,en-US;q=0.8,en;q=0.6
+
+Formato da resposta:
+
+.. code-block:: HTTP
+
+	HTTP/1.1 200 OK
+	Content-Type: application/json; charset=utf-8
+	Connection: close
+
+	{
+	"isValid":true,
+	"expires_in":"2015-07-20T21:27:29",
+	"grant_type":"client_credentials",
+	"scope":"[Escopo]"
+	}
+
+.. note::
+
+	Tokens gerados a partir do fluxo *Resource Owner Password Credentials* também retornam o atributo *username*, contendo o nome do usuário associado, se forem válidos.

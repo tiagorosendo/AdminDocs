@@ -32,7 +32,7 @@
   
     <link rel="top" title="Admin API Docs 3.0.0 documentation" href="../index.html"/>
         <link rel="next" title="Admin API" href="adminapi.html"/>
-        <link rel="prev" title="Visão Geral do Admin Braspag" href="overview.html"/> 
+        <link rel="prev" title="Visão Geral" href="overview.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -72,13 +72,7 @@
           
           
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="overview.html">Visão Geral do Admin Braspag</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="overview.html#o-que-e-x">O que é X?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="overview.html#application-anatomy">Application anatomy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="overview.html#teste-de-bloco">Teste de bloco</a></li>
-<li class="toctree-l2"><a class="reference internal" href="overview.html#exemplo-de-imagem">Exemplo de Imagem</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Visão Geral</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Braspag Auth</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#introducao">Introdução</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#obtencao-de-autorizacao">Obtenção de Autorização</a></li>
@@ -87,14 +81,10 @@
 <li class="toctree-l3"><a class="reference internal" href="#resource-owner-password-credentials">2. Resource Owner Password Credentials</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#validacao-de-token">Validação de Token</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="adminapi.html">Admin API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dev/index.html">Recursos para Desenvolvedores</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../dev/project.html">Estrutura do Projeto</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../dev/services.html">Serviços</a></li>
-</ul>
-</li>
 </ul>
 
           
@@ -157,6 +147,10 @@ específicos para aplicações web, aplicações desktop, dispositivos móveis, 
 <div class="highlight-HTTP"><div class="highlight"><pre>[ClientId]:[ClientSecret]
 </pre></div>
 </div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last"><em>ClientId</em> e <em>ClientSecret</em> são informações sensíveis que compõem uma credencial única por cliente, não devendo, portanto, serem fornecidas a terceiros.</p>
+</div>
 </div>
 <div class="section" id="tipos-de-permissao-grant-types">
 <h2>Tipos de Permissão (Grant Types)<a class="headerlink" href="#tipos-de-permissao-grant-types" title="Permalink to this headline">¶</a></h2>
@@ -168,7 +162,7 @@ específicos para aplicações web, aplicações desktop, dispositivos móveis, 
 <div><img alt="../_images/client-credentials.png" src="../_images/client-credentials.png" />
 </div></blockquote>
 <p>Formato da requisição POST:</p>
-<div class="highlight-HTTP"><div class="highlight"><pre><span class="nf">POST</span> <span class="nn">https://{braspag.url}/api/auth/v1/token</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<div class="highlight-HTTP"><div class="highlight"><pre><span class="nf">POST</span> <span class="nn">https://{braspag_url}/api/auth/v1/token</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Connection</span><span class="o">:</span> <span class="l">keep-alive</span>
 <span class="na">Authorization</span><span class="o">:</span> <span class="l">Basic NTY3N0M5RUItNERDUpkaXF4VWZLUmhEN1BBUTVuYUZubFBJclg4SWVDc0hlamM=</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/x-www-form-urlencoded</span>
@@ -202,7 +196,7 @@ grant_type=client_credentials&amp;scope=[Escopo]
 <div><img alt="../_images/resource-owner.png" src="../_images/resource-owner.png" />
 </div></blockquote>
 <p>Formato da requisição POST:</p>
-<div class="highlight-HTTP"><div class="highlight"><pre><span class="nf">POST</span> <span class="nn">https://{braspag.url}/api/auth/v1/token</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<div class="highlight-HTTP"><div class="highlight"><pre><span class="nf">POST</span> <span class="nn">https://{braspag_url}/api/auth/v1/token</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Connection</span><span class="o">:</span> <span class="l">keep-alive</span>
 <span class="na">Authorization</span><span class="o">:</span> <span class="l">Basic NTY3N0M5RUItNERDUpkaXF4VWZLUmhEN1BBUTVuYUZubFBJclg4SWVDc0hlamM=</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/x-www-form-urlencoded</span>
@@ -229,6 +223,39 @@ grant_type=password&amp;username=[Usuario]&amp;password=[Senha]&amp;scope=[Escop
 </div>
 </div>
 </div>
+<div class="section" id="validacao-de-token">
+<h2>Validação de Token<a class="headerlink" href="#validacao-de-token" title="Permalink to this headline">¶</a></h2>
+<p>Para aplicativos que precisam validar se um determinado token de acesso existe, não está expirado e possui o escopo
+adequado, <strong>Braspag Auth</strong> oferece a operação <code class="docutils literal"><span class="pre">Validate</span></code>. A operação deve ser chamada através de uma requisição GET,
+informando <em>{token_a_ser_validado}</em> como parâmetro na URL. A requisição deve possuir ainda <em>{token_de_acesso_valido}</em> no cabeçalho Authorization, conforme exemplificado abaixo:</p>
+<p>Formato da requisição GET:</p>
+<div class="highlight-HTTP"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">https://{braspag_url}/api/auth/v1/token/{token_a_ser_validado}</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Connection</span><span class="o">:</span> <span class="l">keep-alive</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {token_de_acesso_valido}</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/x-www-form-urlencoded</span>
+<span class="na">Accept</span><span class="o">:</span> <span class="l">*/*</span>
+<span class="na">Accept-Encoding</span><span class="o">:</span> <span class="l">gzip, deflate</span>
+<span class="na">Accept-Language</span><span class="o">:</span> <span class="l">pt,en-US;q=0.8,en;q=0.6</span>
+</pre></div>
+</div>
+<p>Formato da resposta:</p>
+<div class="highlight-HTTP"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+<span class="na">Connection</span><span class="o">:</span> <span class="l">close</span>
+
+<span class="p">{</span>
+<span class="nt">&quot;isValid&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span>
+<span class="nt">&quot;expires_in&quot;</span><span class="p">:</span><span class="s2">&quot;2015-07-20T21:27:29&quot;</span><span class="p">,</span>
+<span class="nt">&quot;grant_type&quot;</span><span class="p">:</span><span class="s2">&quot;client_credentials&quot;</span><span class="p">,</span>
+<span class="nt">&quot;scope&quot;</span><span class="p">:</span><span class="s2">&quot;[Escopo]&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Tokens gerados a partir do fluxo <em>Resource Owner Password Credentials</em> também retornam o atributo <em>username</em>, contendo o nome do usuário associado, se forem válidos.</p>
+</div>
+</div>
 </div>
 
 
@@ -240,7 +267,7 @@ grant_type=password&amp;username=[Usuario]&amp;password=[Senha]&amp;scope=[Escop
         <a href="adminapi.html" class="btn btn-neutral float-right" title="Admin API" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="overview.html" class="btn btn-neutral" title="Visão Geral do Admin Braspag" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="overview.html" class="btn btn-neutral" title="Visão Geral" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

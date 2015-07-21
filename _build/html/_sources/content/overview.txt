@@ -12,9 +12,8 @@ Algumas destas tarefas são listadas abaixo:
 * Acesso aos dados de lojas do Pagador (*em breve*)
 * Cadastro de Usuários (*em breve*)
 
-**Admin API** é composta pelas funcionalidades de negócio descritas acima.
+**Admin API** é o conjunto de serviços que implementam as funcionalidades de negócio descritas acima.
 
-**Braspag Auth** é a API que implementa o Serviço de Autorização necessário para garantir a segurança no consumo da Admin API, através da criação e validação de tokens de acesso com escopo e
-duração limitados.
+**Braspag Auth** é o serviço de autorização necessário para garantir a segurança no consumo da Admin API, através da criação e validação de tokens de acesso com escopo e duração limitados.
 
 Tokens de acesso precisam ser obtidos para garantir acesso as APIs de negócio e também para utilização de recursos de *Single Sign-On* entre aplicativos e sites dentro do domínio Braspag / Cielo.

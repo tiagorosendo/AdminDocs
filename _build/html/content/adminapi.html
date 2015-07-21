@@ -31,7 +31,6 @@
 
   
     <link rel="top" title="Admin API Docs 3.0.0 documentation" href="../index.html"/>
-        <link rel="next" title="Recursos para Desenvolvedores" href="../dev/index.html"/>
         <link rel="prev" title="Braspag Auth" href="braspagauth.html"/> 
 
   
@@ -72,13 +71,7 @@
           
           
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="overview.html">Visão Geral do Admin Braspag</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="overview.html#o-que-e-x">O que é X?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="overview.html#application-anatomy">Application anatomy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="overview.html#teste-de-bloco">Teste de bloco</a></li>
-<li class="toctree-l2"><a class="reference internal" href="overview.html#exemplo-de-imagem">Exemplo de Imagem</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Visão Geral</a></li>
 <li class="toctree-l1"><a class="reference internal" href="braspagauth.html">Braspag Auth</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="braspagauth.html#introducao">Introdução</a></li>
 <li class="toctree-l2"><a class="reference internal" href="braspagauth.html#obtencao-de-autorizacao">Obtenção de Autorização</a></li>
@@ -87,12 +80,20 @@
 <li class="toctree-l3"><a class="reference internal" href="braspagauth.html#resource-owner-password-credentials">2. Resource Owner Password Credentials</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="braspagauth.html#validacao-de-token">Validação de Token</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Admin API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dev/index.html">Recursos para Desenvolvedores</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../dev/project.html">Estrutura do Projeto</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../dev/services.html">Serviços</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Admin API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#gerenciamento-de-estabelecimento-comercial-ec">Gerenciamento de Estabelecimento Comercial (EC)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#criacao-de-ec">1. Criação de EC</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#formato-da-requisicao-post">Formato da requisição POST:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#contrato-json-para-criacao-de-ec">Contrato JSON para criação de EC:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#atualizacao-de-ec">2. Atualização de EC</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#atualizacao-de-estabelecimento-comercial">Atualização de Estabelecimento Comercial</a></li>
 </ul>
 </li>
 </ul>
@@ -134,6 +135,94 @@
             
   <div class="section" id="admin-api">
 <h1>Admin API<a class="headerlink" href="#admin-api" title="Permalink to this headline">¶</a></h1>
+<p>Por <a class="reference external" href="mailto:dmarins&#37;&#52;&#48;braspag&#46;com&#46;br">Diogo Marins</a> e <a class="reference external" href="mailto:rabdalla&#37;&#52;&#48;braspag&#46;com&#46;br">Ricardo Abdalla</a></p>
+<div class="section" id="gerenciamento-de-estabelecimento-comercial-ec">
+<h2>Gerenciamento de Estabelecimento Comercial (EC)<a class="headerlink" href="#gerenciamento-de-estabelecimento-comercial-ec" title="Permalink to this headline">¶</a></h2>
+<p>A API REST para gerenciamento de Estabelecimento Comercial (EC) oferece operações para criação (POST) e atualização (PUT) de ECs Cielo. As chamadas para a API devem ser precedidas de uma chamada inicial para <strong>Braspag Auth</strong> com o intuíto de obter um token de acesso. Chamadas para a API realizadas sem um token de acesso ou com um token de acesso expirado retornarão o código HTTP <code class="docutils literal"><span class="pre">401</span> <span class="pre">Unauthorized</span></code>. Um token de acesso pode e deve ser reutilizado para múltiplas chamadas à API, desde que estejam dentro do seu período de validade.</p>
+<p>Os passos a serem efetuados são descritos a seguir:</p>
+<ol class="arabic simple">
+<li>Obtenha junto à Braspag uma credencial de acesso (<em>ClientId</em> e <em>ClientSecret</em>);</li>
+<li>Com a credencial obtida, obtenha um token de acesso realizando uma chamada para <strong>Braspag Auth</strong> informando o tipo de permissão <em>client_credentials</em> e o escopo <em>AdminApiEc</em>;</li>
+<li>Utilize o token de acesso obtido para efetuar chamadas para as operações de criação ou atualização de EC;</li>
+</ol>
+<div class="section" id="criacao-de-ec">
+<h3>1. Criação de EC<a class="headerlink" href="#criacao-de-ec" title="Permalink to this headline">¶</a></h3>
+<p>Cria um EC Cielo (WebService 3, Checkout Completo ou Loja Virtual) no ambiente Braspag.</p>
+<div class="section" id="formato-da-requisicao-post">
+<h4>Formato da requisição POST:<a class="headerlink" href="#formato-da-requisicao-post" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-HTTP"><div class="highlight"><pre>POST https://{braspag_url}/api/v1/ec HTTP/1.1
+Connection: keep-alive
+Authorization: Bearer 974bd09d6992422183b970cc8343cc9a
+Content-Type: application/json
+Accept: */*
+Accept-Encoding: gzip, deflate
+Accept-Language: pt,en-US;q=0.8,en;q=0.6
+
+{ contrato_json }
+</pre></div>
+</div>
+</div>
+<div class="section" id="contrato-json-para-criacao-de-ec">
+<h4>Contrato JSON para criação de EC:<a class="headerlink" href="#contrato-json-para-criacao-de-ec" title="Permalink to this headline">¶</a></h4>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Os comentários no código abaixo são meramente explicativos e não devem ser enviados com o contrato</p>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+  <span class="cm">/* Dados gerais do EC, obrigatório */</span>
+  <span class="s2">&quot;GeneralData&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;Email&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;DocumentType&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> <span class="cm">/* 0 = Pessoa Jurídica, 1 = Pessoa Física */</span>
+    <span class="s2">&quot;ContactName&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Phone&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span>
+  <span class="p">},</span>
+  <span class="cm">/* Obrigatório apenas se Pessoa Jurídica */</span>
+  <span class="s2">&quot;CompanyData&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;FancyName&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;CorporateName&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Cnpj&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span>
+  <span class="p">},</span>
+  <span class="cm">/* Obrigatório apenas se Pessoa Física */</span>
+  <span class="s2">&quot;PersonalData&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;FullName&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Cpf&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span>
+  <span class="p">},</span>
+  <span class="cm">/* Endereço Comercial, obrigatório */</span>
+  <span class="s2">&quot;BusinessAddress&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;ZipCode&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Address&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Number&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Complement&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;District&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;City&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;State&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span>
+  <span class="p">},</span>
+  <span class="cm">/* Informações transacionais, obrigatório */</span>
+  <span class="s2">&quot;TransactionalConfiguration&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;Ec&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ProductionKey&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Mcc&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;PaymentMethods&quot;</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;MaxInstallments&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;CvvRequired&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;IntegrationType&quot;</span><span class="o">:</span> <span class="mi">0</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="atualizacao-de-ec">
+<h3>2. Atualização de EC<a class="headerlink" href="#atualizacao-de-ec" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="atualizacao-de-estabelecimento-comercial">
+<h2>Atualização de Estabelecimento Comercial<a class="headerlink" href="#atualizacao-de-estabelecimento-comercial" title="Permalink to this headline">¶</a></h2>
+</div>
 </div>
 
 
@@ -141,8 +230,6 @@
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../dev/index.html" class="btn btn-neutral float-right" title="Recursos para Desenvolvedores" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="braspagauth.html" class="btn btn-neutral" title="Braspag Auth" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
