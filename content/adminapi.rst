@@ -94,15 +94,15 @@ Contrato JSON para criação de EC
 
 .. seealso::
 
-	Tabela :ref:`Valores válidos para os tipos de integração <integration-types-label>`.
+	:ref:`Valores válidos para os tipos de integração <integration-types-label>`
 
 .. seealso::
 
-	Definição do contrato de criação de EC: |swagger_post_ec|.
+	|swagger_post_ec|
 
 .. |swagger_post_ec| raw:: html
 
-   <a href="https://adminhomolog.braspag.com.br/swagger/ui/index#!/Ec/Ec_Post" target="_blank">clique aqui</a>
+   <a href="https://adminhomolog.braspag.com.br/swagger/ui/index#!/Ec/Ec_Post" target="_blank">Contrato de Criação de EC (Swagger)</a>
 
 Códigos de Retorno HTTP
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -194,15 +194,15 @@ Contrato JSON para atualização de EC
 
 .. seealso::
 
-	Tabela :ref:`Valores válidos para os tipos de integração <integration-types-label>`.
+	:ref:`Valores válidos para os tipos de integração <integration-types-label>`
 
 .. seealso::
 
-	Definição do contrato de atualização de EC: |swagger_put_ec|.
+	|swagger_put_ec|
 
 .. |swagger_put_ec| raw:: html
 
-   <a href="https://adminhomolog.braspag.com.br/swagger/ui/index#!/Ec/Ec_Put" target="_blank">clique aqui</a>
+   <a href="https://adminhomolog.braspag.com.br/swagger/ui/index#!/Ec/Ec_Put" target="_blank">Contrato de Atualização de EC (Swagger)</a>
 
 Códigos de Retorno HTTP
 ^^^^^^^^^^^^^^^^^^^^^^^^

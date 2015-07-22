@@ -14,5 +14,6 @@ Tópicos:
    content/overview
    content/braspagauth
    content/adminapi
+   tutorials
 
 .. include:: ./common/authors.txt

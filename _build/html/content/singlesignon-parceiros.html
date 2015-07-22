@@ -1,0 +1,277 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Autenticação Direta a partir de sites parceiros &mdash; Admin API Docs 3.0.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Admin API Docs 3.0.0 documentation" href="../index.html"/>
+        <link rel="up" title="Tutoriais" href="../tutorials.html"/>
+        <link rel="prev" title="Tutoriais" href="../tutorials.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../index.html" class="icon icon-home"> Admin API Docs
+        
+
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Visão Geral</a></li>
+<li class="toctree-l1"><a class="reference internal" href="braspagauth.html">Braspag Auth</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="braspagauth.html#introducao">Introdução</a></li>
+<li class="toctree-l2"><a class="reference internal" href="braspagauth.html#obtencao-de-autorizacao">Obtenção de Autorização</a></li>
+<li class="toctree-l2"><a class="reference internal" href="braspagauth.html#tipos-de-permissao-grant-types">Tipos de Permissão (Grant Types)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="braspagauth.html#client-credentials">1. Client Credentials</a></li>
+<li class="toctree-l3"><a class="reference internal" href="braspagauth.html#resource-owner-password-credentials">2. Resource Owner Password Credentials</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="braspagauth.html#tipos-de-escopo">Tipos de Escopo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="braspagauth.html#validacao-de-token">Validação de Token</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="adminapi.html">Admin API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="adminapi.html#gerenciamento-de-estabelecimento-comercial-ec">Gerenciamento de Estabelecimento Comercial (EC)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="adminapi.html#criacao-de-ec">1. Criação de EC</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adminapi.html#formato-da-requisicao-post">Formato da requisição POST</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adminapi.html#contrato-json-para-criacao-de-ec">Contrato JSON para criação de EC</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adminapi.html#codigos-de-retorno-http">Códigos de Retorno HTTP</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="adminapi.html#atualizacao-de-ec">2. Atualização de EC</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adminapi.html#formato-da-requisicao-put">Formato da requisição PUT</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adminapi.html#contrato-json-para-atualizacao-de-ec">Contrato JSON para atualização de EC</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adminapi.html#id1">Códigos de Retorno HTTP</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="adminapi.html#valores-validos-para-os-tipos-de-integracao">Valores válidos para os tipos de integração</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../tutorials.html">Tutoriais</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="">Autenticação Direta a partir de sites parceiros</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">Admin API Docs</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../tutorials.html">Tutoriais</a> &raquo;</li>
+      
+    <li>Autenticação Direta a partir de sites parceiros</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/content/singlesignon-parceiros.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="autenticacao-direta-a-partir-de-sites-parceiros">
+<h1>Autenticação Direta a partir de sites parceiros<a class="headerlink" href="#autenticacao-direta-a-partir-de-sites-parceiros" title="Permalink to this headline">¶</a></h1>
+<p>O recurso de Autenticação Direta permite com que usuários autenticados em sites parceiros acessem links no Admin Braspag sem experimentar um novo processo de autenticação.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Para que a Autenticação Direta funcione corretamente, os usuários do site parceiro precisam estar previamente habilitados no Admin Braspag.</p>
+</div>
+<p>Fluxo de Autenticação Direta:</p>
+<blockquote>
+<div><img alt="../_images/acesso-direto-parceiros.png" src="../_images/acesso-direto-parceiros.png" />
+</div></blockquote>
+<p>Passo a passo para implementação:</p>
+<ol class="arabic simple">
+<li>Após a autenticação do usuário no site parceiro, efetue uma chamada para requisição de token de acesso ao serviço Braspag Auth. Informe as credenciais de acesso do cliente (<em>ClientId</em> e <em>ClientSecret</em>) no cabeçalho Authorization, as credenciais de acesso do usuário autenticado e o escopo para o qual o usuário será redirecionado;</li>
+</ol>
+<div class="highlight-HTTP"><div class="highlight"><pre><span class="nf">POST</span> <span class="nn">https://{braspag_url}/api/auth/v1/token</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Connection</span><span class="o">:</span> <span class="l">keep-alive</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">Basic NTY3N0M5RUItNERDUpkaXF4VWZLUmhEN1BBUTVuYUZubFBJclg4SWVDc0hlamM=</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/x-www-form-urlencoded</span>
+<span class="na">Accept</span><span class="o">:</span> <span class="l">*/*</span>
+<span class="na">Accept-Encoding</span><span class="o">:</span> <span class="l">gzip, deflate</span>
+<span class="na">Accept-Language</span><span class="o">:</span> <span class="l">pt,en-US;q=0.8,en;q=0.6</span>
+
+grant_type=password&amp;username=[Usuario]&amp;password=[Senha]&amp;scope=[Escopo]
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Efetue uma requisição POST para o endereço de autenticação direta do Admin Braspag informando o token de acesso (<em>access_token</em>) retornado no passo 1;</li>
+</ol>
+<div class="highlight-HTTP"><div class="highlight"><pre><span class="nf">POST</span> <span class="nn">https://{braspag_url}/Account/SingleSignOn</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Connection</span><span class="o">:</span> <span class="l">keep-alive</span>
+<span class="na">Cache-Control</span><span class="o">:</span> <span class="l">max-age=0</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/x-www-form-urlencoded</span>
+<span class="na">Accept</span><span class="o">:</span> <span class="l">text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8</span>
+<span class="na">Accept-Encoding</span><span class="o">:</span> <span class="l">gzip, deflate</span>
+<span class="na">Accept-Language</span><span class="o">:</span> <span class="l">pt,en-US;q=0.8,en;q=0.6</span>
+
+AccessToken=[access_token]
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Se as credenciais do usuário informadas na geração do token forem válidas para o escopo, uma resposta de redirecionamento será retornada com um cookie de autenticação válido para a sessão recém iniciada;</li>
+</ol>
+<div class="highlight-HTTP"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">302</span> <span class="ne">Found</span>
+<span class="na">Cache-Control</span><span class="o">:</span> <span class="l">no-cache, no-store, must-revalidate</span>
+<span class="na">Pragma</span><span class="o">:</span> <span class="l">no-cache</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">text/html; charset=utf-8</span>
+<span class="na">Expires</span><span class="o">:</span> <span class="l">-1</span>
+<span class="na">Location</span><span class="o">:</span> <span class="l">/</span>
+<span class="na">Set-Cookie</span><span class="o">:</span> <span class="l">.ASPXAUTH=50309C5D71CACFB18A8A0FD6EE409BBC; path=/; secure; HttpOnly</span>
+<span class="na">Strict-Transport-Security</span><span class="o">:</span> <span class="l">max-age=31536000</span>
+
+<span class="nt">&lt;html&gt;&lt;head&gt;&lt;title&gt;</span>Object moved<span class="nt">&lt;/title&gt;&lt;/head&gt;&lt;body&gt;</span>
+<span class="nt">&lt;h2&gt;</span>Object moved to <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;/&quot;</span><span class="nt">&gt;</span>here<span class="nt">&lt;/a&gt;</span>.<span class="nt">&lt;/h2&gt;</span>
+<span class="nt">&lt;/body&gt;&lt;/html&gt;</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="braspagauth.html#scopes-label"><span>Tabela de Escopos disponíveis</span></a></p>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../tutorials.html" class="btn btn-neutral" title="Tutoriais" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Braspag FrontEnd Team.
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'3.0.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
