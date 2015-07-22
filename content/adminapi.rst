@@ -153,7 +153,7 @@ Contrato JSON para atualização de EC
       "DocumentType": 0, /* 0 = Pessoa Jurídica, 1 = Pessoa Física */
       "ContactName": "string", /* Nome do contato, máximo 60 caracteres */
       "Phone": "string", /* Telefone do EC, formato '(99) 99999-9999', máximo 16 caracteres */
-			"IsBlocked": true
+      "IsBlocked": true /* Indica se EC está bloqueado para transações, formato: true/false */
     },
     /* Dados da Empresa, obrigatório apenas se Pessoa Jurídica */
     "CompanyData": {

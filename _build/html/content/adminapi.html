@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Admin API &mdash; Admin API Docs 3.0.0 documentation</title>
+  <title>Admin API &mdash; Admin API Docs 3.0.0 documentação</title>
   
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="Admin API Docs 3.0.0 documentation" href="../index.html"/>
+    <link rel="top" title="Admin API Docs 3.0.0 documentação" href="../index.html"/>
         <link rel="next" title="Tutoriais" href="../tutorials.html"/>
         <link rel="prev" title="Braspag Auth" href="braspagauth.html"/> 
 
@@ -146,10 +146,10 @@
           <div role="main" class="document">
             
   <div class="section" id="admin-api">
-<h1>Admin API<a class="headerlink" href="#admin-api" title="Permalink to this headline">¶</a></h1>
+<h1>Admin API<a class="headerlink" href="#admin-api" title="Link permanente para este título">¶</a></h1>
 <p>Por <a class="reference external" href="mailto:dmarins&#37;&#52;&#48;braspag&#46;com&#46;br">Diogo Marins</a> e <a class="reference external" href="mailto:rabdalla&#37;&#52;&#48;braspag&#46;com&#46;br">Ricardo Abdalla</a></p>
 <div class="section" id="gerenciamento-de-estabelecimento-comercial-ec">
-<h2>Gerenciamento de Estabelecimento Comercial (EC)<a class="headerlink" href="#gerenciamento-de-estabelecimento-comercial-ec" title="Permalink to this headline">¶</a></h2>
+<h2>Gerenciamento de Estabelecimento Comercial (EC)<a class="headerlink" href="#gerenciamento-de-estabelecimento-comercial-ec" title="Link permanente para este título">¶</a></h2>
 <p>A API REST para gerenciamento de Estabelecimento Comercial (EC) oferece operações para criação (POST) e atualização (PUT) de ECs Cielo. As chamadas para a API devem ser precedidas de uma chamada inicial para <strong>Braspag Auth</strong> com o intuíto de obter um token de acesso. Chamadas para a API realizadas sem um token de acesso ou com um token de acesso expirado retornarão o código HTTP <code class="docutils literal"><span class="pre">401</span> <span class="pre">Unauthorized</span></code>. Um token de acesso pode e deve ser reutilizado para múltiplas chamadas à API, desde que estejam dentro do seu período de validade.</p>
 <p>Os passos a serem efetuados são descritos a seguir:</p>
 <ol class="arabic simple">
@@ -158,10 +158,10 @@
 <li>Utilize o token de acesso obtido para efetuar chamadas para as operações de criação ou atualização de EC;</li>
 </ol>
 <div class="section" id="criacao-de-ec">
-<h3>1. Criação de EC<a class="headerlink" href="#criacao-de-ec" title="Permalink to this headline">¶</a></h3>
+<h3>1. Criação de EC<a class="headerlink" href="#criacao-de-ec" title="Link permanente para este título">¶</a></h3>
 <p>Cria um EC Cielo (WebService 3, Checkout Completo ou Loja Virtual) no ambiente Braspag.</p>
 <div class="section" id="formato-da-requisicao-post">
-<h4>Formato da requisição POST<a class="headerlink" href="#formato-da-requisicao-post" title="Permalink to this headline">¶</a></h4>
+<h4>Formato da requisição POST<a class="headerlink" href="#formato-da-requisicao-post" title="Link permanente para este título">¶</a></h4>
 <div class="highlight-HTTP"><div class="highlight"><pre><span class="nf">POST</span> <span class="nn">https://{braspag_url}/api/v1/ec</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Connection</span><span class="o">:</span> <span class="l">keep-alive</span>
 <span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer 974bd09d6992422183b970cc8343cc9a</span>
@@ -175,9 +175,9 @@
 </div>
 </div>
 <div class="section" id="contrato-json-para-criacao-de-ec">
-<h4>Contrato JSON para criação de EC<a class="headerlink" href="#contrato-json-para-criacao-de-ec" title="Permalink to this headline">¶</a></h4>
+<h4>Contrato JSON para criação de EC<a class="headerlink" href="#contrato-json-para-criacao-de-ec" title="Link permanente para este título">¶</a></h4>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="first admonition-title">Nota</p>
 <p class="last">Os comentários no código abaixo são meramente explicativos e não devem ser enviados com o contrato.</p>
 </div>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
@@ -228,16 +228,16 @@
 </pre></div>
 </div>
 <div class="admonition seealso">
-<p class="first admonition-title">See also</p>
+<p class="first admonition-title">Veja também</p>
 <p class="last"><a class="reference internal" href="#integration-types-label"><span>Valores válidos para os tipos de integração</span></a></p>
 </div>
 <div class="admonition seealso">
-<p class="first admonition-title">See also</p>
+<p class="first admonition-title">Veja também</p>
 <p class="last"><a href="https://adminhomolog.braspag.com.br/swagger/ui/index#!/Ec/Ec_Post" target="_blank">Contrato de Criação de EC (Swagger)</a></p>
 </div>
 </div>
 <div class="section" id="codigos-de-retorno-http">
-<h4>Códigos de Retorno HTTP<a class="headerlink" href="#codigos-de-retorno-http" title="Permalink to this headline">¶</a></h4>
+<h4>Códigos de Retorno HTTP<a class="headerlink" href="#codigos-de-retorno-http" title="Link permanente para este título">¶</a></h4>
 <table border="1" class="docutils">
 <colgroup>
 <col width="41%" />
@@ -266,10 +266,10 @@
 </div>
 </div>
 <div class="section" id="atualizacao-de-ec">
-<h3>2. Atualização de EC<a class="headerlink" href="#atualizacao-de-ec" title="Permalink to this headline">¶</a></h3>
+<h3>2. Atualização de EC<a class="headerlink" href="#atualizacao-de-ec" title="Link permanente para este título">¶</a></h3>
 <p>Atualiza as informações de um EC Cielo (WebService 3, Checkout Completo ou Loja Virtual) no ambiente Braspag.</p>
 <div class="section" id="formato-da-requisicao-put">
-<h4>Formato da requisição PUT<a class="headerlink" href="#formato-da-requisicao-put" title="Permalink to this headline">¶</a></h4>
+<h4>Formato da requisição PUT<a class="headerlink" href="#formato-da-requisicao-put" title="Link permanente para este título">¶</a></h4>
 <div class="highlight-HTTP"><div class="highlight"><pre><span class="nf">PUT</span> <span class="nn">https://{braspag_url}/api/v1/ec/?EcNumber={ecNumber}</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Connection</span><span class="o">:</span> <span class="l">keep-alive</span>
 <span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer 974bd09d6992422183b970cc8343cc9a</span>
@@ -283,9 +283,9 @@
 </div>
 </div>
 <div class="section" id="contrato-json-para-atualizacao-de-ec">
-<h4>Contrato JSON para atualização de EC<a class="headerlink" href="#contrato-json-para-atualizacao-de-ec" title="Permalink to this headline">¶</a></h4>
+<h4>Contrato JSON para atualização de EC<a class="headerlink" href="#contrato-json-para-atualizacao-de-ec" title="Link permanente para este título">¶</a></h4>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="first admonition-title">Nota</p>
 <p class="last">Os comentários no código abaixo são meramente explicativos e não devem ser enviados com o contrato.</p>
 </div>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
@@ -295,7 +295,7 @@
     <span class="s2">&quot;DocumentType&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> <span class="cm">/* 0 = Pessoa Jurídica, 1 = Pessoa Física */</span>
     <span class="s2">&quot;ContactName&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="cm">/* Nome do contato, máximo 60 caracteres */</span>
     <span class="s2">&quot;Phone&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="cm">/* Telefone do EC, formato &#39;(99) 99999-9999&#39;, máximo 16 caracteres */</span>
-                      <span class="s2">&quot;IsBlocked&quot;</span><span class="o">:</span> <span class="kc">true</span>
+    <span class="s2">&quot;IsBlocked&quot;</span><span class="o">:</span> <span class="kc">true</span> <span class="cm">/* Indica se EC está bloqueado para transações, formato: true/false */</span>
   <span class="p">},</span>
   <span class="cm">/* Dados da Empresa, obrigatório apenas se Pessoa Jurídica */</span>
   <span class="s2">&quot;CompanyData&quot;</span><span class="o">:</span> <span class="p">{</span>
@@ -336,16 +336,16 @@
 </pre></div>
 </div>
 <div class="admonition seealso">
-<p class="first admonition-title">See also</p>
+<p class="first admonition-title">Veja também</p>
 <p class="last"><a class="reference internal" href="#integration-types-label"><span>Valores válidos para os tipos de integração</span></a></p>
 </div>
 <div class="admonition seealso">
-<p class="first admonition-title">See also</p>
+<p class="first admonition-title">Veja também</p>
 <p class="last"><a href="https://adminhomolog.braspag.com.br/swagger/ui/index#!/Ec/Ec_Put" target="_blank">Contrato de Atualização de EC (Swagger)</a></p>
 </div>
 </div>
 <div class="section" id="id1">
-<h4>Códigos de Retorno HTTP<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<h4>Códigos de Retorno HTTP<a class="headerlink" href="#id1" title="Link permanente para este título">¶</a></h4>
 <table border="1" class="docutils">
 <colgroup>
 <col width="41%" />
@@ -374,7 +374,7 @@
 </div>
 </div>
 <div class="section" id="valores-validos-para-os-tipos-de-integracao">
-<span id="integration-types-label"></span><h3>Valores válidos para os tipos de integração<a class="headerlink" href="#valores-validos-para-os-tipos-de-integracao" title="Permalink to this headline">¶</a></h3>
+<span id="integration-types-label"></span><h3>Valores válidos para os tipos de integração<a class="headerlink" href="#valores-validos-para-os-tipos-de-integracao" title="Link permanente para este título">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="17%" />
@@ -461,6 +461,7 @@
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/translations.js"></script>
 
   
 

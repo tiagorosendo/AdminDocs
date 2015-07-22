@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Braspag Auth &mdash; Admin API Docs 3.0.0 documentation</title>
+  <title>Braspag Auth &mdash; Admin API Docs 3.0.0 documentação</title>
   
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="Admin API Docs 3.0.0 documentation" href="../index.html"/>
+    <link rel="top" title="Admin API Docs 3.0.0 documentação" href="../index.html"/>
         <link rel="next" title="Admin API" href="adminapi.html"/>
         <link rel="prev" title="Visão Geral" href="overview.html"/> 
 
@@ -146,20 +146,20 @@
           <div role="main" class="document">
             
   <div class="section" id="braspag-auth">
-<h1>Braspag Auth<a class="headerlink" href="#braspag-auth" title="Permalink to this headline">¶</a></h1>
+<h1>Braspag Auth<a class="headerlink" href="#braspag-auth" title="Link permanente para este título">¶</a></h1>
 <p>Por <a class="reference external" href="mailto:dbraga&#37;&#52;&#48;braspag&#46;com&#46;br">Daniel Braga</a> e <a class="reference external" href="mailto:rabdalla&#37;&#52;&#48;braspag&#46;com&#46;br">Ricardo Abdalla</a></p>
 <div class="section" id="introducao">
-<h2>Introdução<a class="headerlink" href="#introducao" title="Permalink to this headline">¶</a></h2>
+<h2>Introdução<a class="headerlink" href="#introducao" title="Link permanente para este título">¶</a></h2>
 <p><strong>Braspag Auth</strong> é o Serviço de Autorização da Braspag, implementado de acordo com as especificações do protocolo OAuth2. O objetivo deste serviço é prover fluxos de autorização
 específicos para aplicações web, aplicações desktop, dispositivos móveis, entre outros.</p>
 <p>A especificação do OAuth2 é definida pelo <a class="reference external" href="http://tools.ietf.org/html/rfc6749">RFC 6749</a>.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="first admonition-title">Nota</p>
 <p class="last">A versão 1.0 do Braspag Auth ainda não implementa os fluxos <em>Authorization Code</em> e <em>Implicit</em> especificados no OAuth2.</p>
 </div>
 </div>
 <div class="section" id="obtencao-de-autorizacao">
-<h2>Obtenção de Autorização<a class="headerlink" href="#obtencao-de-autorizacao" title="Permalink to this headline">¶</a></h2>
+<h2>Obtenção de Autorização<a class="headerlink" href="#obtencao-de-autorizacao" title="Link permanente para este título">¶</a></h2>
 <p>Para obter autorização de acesso aos recursos protegidos pelo Braspag Auth, é preciso informar na requisição HTTP o tipo de permissão desejada, além das credenciais de cliente. O servidor de autorização disponibiliza credenciais para seus clientes registrados.</p>
 <p>As credenciais de cliente são compostas por duas informações, <em>ClientId</em> e <em>ClientSecret</em>, únicas para cada cliente.</p>
 <p>Uma vez obtidos, <em>ClientId</em> e <em>ClientSecret</em> devem ser enviados como uma string única, codificada no formato Base64, no cabeçalho Authorization da requisição HTTP, conforme descrito abaixo:</p>
@@ -171,14 +171,14 @@ específicos para aplicações web, aplicações desktop, dispositivos móveis, 
 </pre></div>
 </div>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
+<p class="first admonition-title">Aviso</p>
 <p class="last"><em>ClientId</em> e <em>ClientSecret</em> são informações sensíveis que compõem uma credencial única por cliente, não devendo, portanto, serem fornecidas a terceiros.</p>
 </div>
 </div>
 <div class="section" id="tipos-de-permissao-grant-types">
-<h2>Tipos de Permissão (Grant Types)<a class="headerlink" href="#tipos-de-permissao-grant-types" title="Permalink to this headline">¶</a></h2>
+<h2>Tipos de Permissão (Grant Types)<a class="headerlink" href="#tipos-de-permissao-grant-types" title="Link permanente para este título">¶</a></h2>
 <div class="section" id="client-credentials">
-<h3>1. Client Credentials<a class="headerlink" href="#client-credentials" title="Permalink to this headline">¶</a></h3>
+<h3>1. Client Credentials<a class="headerlink" href="#client-credentials" title="Link permanente para este título">¶</a></h3>
 <p>No fluxo de permissão <code class="docutils literal"><span class="pre">Client</span> <span class="pre">Credentials</span></code>, o cliente requisita um token de acesso para um recurso protegido usando apenas as suas credenciais. Um escopo de validade para o token de acesso deve ser informado. Se as credenciais forem válidas, o token de acesso é emitido e o cliente pode então utilizá-lo para acessar o recurso protegido (por exemplo, alguma das APIs Braspag).</p>
 <p>Fluxo Client Credentials:</p>
 <blockquote>
@@ -211,7 +211,7 @@ grant_type=client_credentials&amp;scope=[Escopo]
 </div>
 </div>
 <div class="section" id="resource-owner-password-credentials">
-<h3>2. Resource Owner Password Credentials<a class="headerlink" href="#resource-owner-password-credentials" title="Permalink to this headline">¶</a></h3>
+<h3>2. Resource Owner Password Credentials<a class="headerlink" href="#resource-owner-password-credentials" title="Link permanente para este título">¶</a></h3>
 <p>No fluxo de permissão <code class="docutils literal"><span class="pre">Resource</span> <span class="pre">Owner</span> <span class="pre">Password</span> <span class="pre">Credentials</span></code>, além das credenciais do cliente (<em>ClientId</em> e <em>ClientSecret</em>), também são informados as credenciais de um usuário (nome de usuário e senha), que são trocadas por um token de acesso e um token de atualização (<em>refresh_token</em>). O acesso realizado com o uso do token será feito em nome do usuário cujas credenciais foram previamente informadas.</p>
 <p>Por que a senha do proprietário do recurso é exposta à aplicação, este fluxo deve ser utilizado apenas em situações onde há um grande grau de confiança entre a aplicação e o provedor da API de autorização. Em outras palavras, seu uso deve ser restrito apenas à aplicações no domínio Braspag.</p>
 <p>Fluxo Resource Owner Password Credentials:</p>
@@ -247,7 +247,7 @@ grant_type=password&amp;username=[Usuario]&amp;password=[Senha]&amp;scope=[Escop
 </div>
 </div>
 <div class="section" id="tipos-de-escopo">
-<span id="scopes-label"></span><h2>Tipos de Escopo<a class="headerlink" href="#tipos-de-escopo" title="Permalink to this headline">¶</a></h2>
+<span id="scopes-label"></span><h2>Tipos de Escopo<a class="headerlink" href="#tipos-de-escopo" title="Link permanente para este título">¶</a></h2>
 <p>Os escopos definem o contexto de validade de um token de acesso. Escopos são <em>case-sensitive</em> e devem ser informados exatamente como escritos abaixo.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -276,7 +276,7 @@ grant_type=password&amp;username=[Usuario]&amp;password=[Senha]&amp;scope=[Escop
 </table>
 </div>
 <div class="section" id="validacao-de-token">
-<h2>Validação de Token<a class="headerlink" href="#validacao-de-token" title="Permalink to this headline">¶</a></h2>
+<h2>Validação de Token<a class="headerlink" href="#validacao-de-token" title="Link permanente para este título">¶</a></h2>
 <p>Para aplicativos que precisam validar se um determinado token de acesso existe, não está expirado e possui o escopo
 adequado, <strong>Braspag Auth</strong> oferece a operação <code class="docutils literal"><span class="pre">Validate</span></code>. A operação deve ser chamada através de uma requisição GET,
 informando <em>{token_a_ser_validado}</em> como parâmetro na URL. A requisição deve possuir ainda <em>{token_de_acesso_valido}</em> no cabeçalho Authorization, conforme exemplificado abaixo:</p>
@@ -304,7 +304,7 @@ informando <em>{token_a_ser_validado}</em> como parâmetro na URL. A requisiçã
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="first admonition-title">Nota</p>
 <p class="last">Tokens gerados a partir do fluxo <em>Resource Owner Password Credentials</em> também retornam o atributo <em>username</em>, contendo o nome do usuário associado, se forem válidos.</p>
 </div>
 </div>
@@ -358,6 +358,7 @@ informando <em>{token_a_ser_validado}</em> como parâmetro na URL. A requisiçã
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/translations.js"></script>
 
   
 
