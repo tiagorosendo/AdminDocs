@@ -39,7 +39,7 @@ O processo de codificação em Base64 deve ser realizado sobre o texto formatado
 
 .. warning::
 
-	*ClientId* e *ClientSecret* são informações sensíveis que compõem uma credencial única por cliente, não devendo, portanto, serem fornecidas a terceiros. 
+	*ClientId* e *ClientSecret* são informações sensíveis que compõem uma credencial única por cliente, não devendo, portanto, serem fornecidas a terceiros.
 
 Tipos de Permissão (Grant Types)
 ================================
@@ -122,6 +122,22 @@ Formato da resposta:
 	"refresh_token":"9999886d97999999999dd7b1b88d8888",
 	"scope":"[Escopo]"
 	}
+
+.. _scopes-label:
+
+Tipos de Escopo
+================
+
+Os escopos definem o contexto de validade de um token de acesso. Escopos são *case-sensitive* e devem ser informados exatamente como escritos abaixo.
+
+==============   ====================================================
+Escopo           Descrição
+==============   ====================================================
+AdminCielo       Single Sign-On de clientes do site Cielo para Admin
+AdminV2          Single Sign-On para Admin versão 2.x
+AdminV3          Single Sign-On para Admin versão 3.x
+AdminApiEc       API para gerenciamento de ECs Cielo
+==============   ====================================================
 
 Validação de Token
 ==================

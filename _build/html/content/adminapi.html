@@ -80,6 +80,7 @@
 <li class="toctree-l3"><a class="reference internal" href="braspagauth.html#resource-owner-password-credentials">2. Resource Owner Password Credentials</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="braspagauth.html#tipos-de-escopo">Tipos de Escopo</a></li>
 <li class="toctree-l2"><a class="reference internal" href="braspagauth.html#validacao-de-token">Validação de Token</a></li>
 </ul>
 </li>
@@ -89,13 +90,15 @@
 <li class="toctree-l4"><a class="reference internal" href="#formato-da-requisicao-post">Formato da requisição POST</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#contrato-json-para-criacao-de-ec">Contrato JSON para criação de EC</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#codigos-de-retorno-http">Códigos de Retorno HTTP</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#valores-validos-para-os-tipos-de-integracao">Valores válidos para os tipos de integração</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#atualizacao-de-ec">2. Atualização de EC</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#formato-da-requisicao-put">Formato da requisição PUT</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#contrato-json-para-atualizacao-de-ec">Contrato JSON para atualização de EC</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Códigos de Retorno HTTP</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#valores-validos-para-os-tipos-de-integracao">Valores válidos para os tipos de integração</a></li>
 </ul>
 </li>
 </ul>
@@ -193,7 +196,7 @@
   <span class="p">},</span>
   <span class="cm">/* Endereço Comercial, obrigatório */</span>
   <span class="s2">&quot;BusinessAddress&quot;</span><span class="o">:</span> <span class="p">{</span>
-    <span class="s2">&quot;ZipCode&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="cm">/* CEP, formato &#39;99999-99&#39;, máximo 9 caracteres */</span>
+    <span class="s2">&quot;ZipCode&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="cm">/* CEP, formato &#39;99999-999&#39;, máximo 9 caracteres */</span>
     <span class="s2">&quot;Address&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="cm">/* Logradouro, máximo 100 caracteres */</span>
     <span class="s2">&quot;Number&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="cm">/* Número, máximo 5 caracteres */</span>
     <span class="s2">&quot;Complement&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="cm">/* Complemento, campo opcional, máximo 50 caracteres */</span>
@@ -214,10 +217,14 @@
       <span class="p">}</span>
     <span class="p">],</span>
     <span class="s2">&quot;CvvRequired&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="cm">/* Obrigatoriedade do código de segurança, formato: true/false  */</span>
-    <span class="s2">&quot;IntegrationType&quot;</span><span class="o">:</span> <span class="mi">0</span> <span class="cm">/* Tipo de integração do EC (ver tabela abaixo) */</span>
+    <span class="s2">&quot;IntegrationType&quot;</span><span class="o">:</span> <span class="mi">0</span> <span class="cm">/* Tipo de integração do EC */</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">Tabela <a class="reference internal" href="#integration-types-label"><span>Valores válidos para os tipos de integração</span></a>.</p>
 </div>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
@@ -241,7 +248,7 @@
 <td>EC criado com sucesso</td>
 </tr>
 <tr class="row-odd"><td>400 Bad Request</td>
-<td>Contrato inválido</td>
+<td>Contrato inválido / Erro de validação</td>
 </tr>
 <tr class="row-even"><td>401 Unauthorized</td>
 <td>Cliente não autenticado</td>
@@ -252,8 +259,117 @@
 </tbody>
 </table>
 </div>
+</div>
+<div class="section" id="atualizacao-de-ec">
+<h3>2. Atualização de EC<a class="headerlink" href="#atualizacao-de-ec" title="Permalink to this headline">¶</a></h3>
+<p>Atualiza as informações de um EC Cielo (WebService 3, Checkout Completo ou Loja Virtual) no ambiente Braspag.</p>
+<div class="section" id="formato-da-requisicao-put">
+<h4>Formato da requisição PUT<a class="headerlink" href="#formato-da-requisicao-put" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-HTTP"><div class="highlight"><pre><span class="nf">PUT</span> <span class="nn">https://{braspag_url}/api/v1/ec/?EcNumber={ecNumber}</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Connection</span><span class="o">:</span> <span class="l">keep-alive</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer 974bd09d6992422183b970cc8343cc9a</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Accept</span><span class="o">:</span> <span class="l">*/*</span>
+<span class="na">Accept-Encoding</span><span class="o">:</span> <span class="l">gzip, deflate</span>
+<span class="na">Accept-Language</span><span class="o">:</span> <span class="l">pt,en-US;q=0.8,en;q=0.6</span>
+
+<span class="p">{</span> <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="contrato-json-para-atualizacao-de-ec">
+<h4>Contrato JSON para atualização de EC<a class="headerlink" href="#contrato-json-para-atualizacao-de-ec" title="Permalink to this headline">¶</a></h4>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Os comentários no código abaixo são meramente explicativos e não devem ser enviados com o contrato.</p>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+  <span class="cm">/* Dados gerais do EC, obrigatório */</span>
+  <span class="s2">&quot;GeneralData&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;Email&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="cm">/* Endereço de email, máximo 60 caracteres */</span>
+    <span class="s2">&quot;DocumentType&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> <span class="cm">/* 0 = Pessoa Jurídica, 1 = Pessoa Física */</span>
+    <span class="s2">&quot;ContactName&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="cm">/* Nome do contato, máximo 60 caracteres */</span>
+    <span class="s2">&quot;Phone&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="cm">/* Telefone do EC, formato &#39;(99) 99999-9999&#39;, máximo 16 caracteres */</span>
+                      <span class="s2">&quot;IsBlocked&quot;</span><span class="o">:</span> <span class="kc">true</span>
+  <span class="p">},</span>
+  <span class="cm">/* Dados da Empresa, obrigatório apenas se Pessoa Jurídica */</span>
+  <span class="s2">&quot;CompanyData&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;FancyName&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="cm">/* Nome Fantasia, máximo 128 caracteres */</span>
+    <span class="s2">&quot;CorporateName&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="cm">/* Razão Social, máximo 128 caracteres */</span>
+    <span class="s2">&quot;Cnpj&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span> <span class="cm">/* Número do CNPJ, formato &#39;99.999.999/9999-99&#39;, máximo 16 caracteres */</span>
+  <span class="p">},</span>
+  <span class="cm">/* Dados do Cliente, obrigatório apenas se Pessoa Física */</span>
+  <span class="s2">&quot;PersonalData&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;FullName&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="cm">/* Nome completo, máximo 128 caracteres */</span>
+    <span class="s2">&quot;Cpf&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span> <span class="cm">/* Número do CPF, formato &#39;999.999.999-99&#39;, máximo 14 caracteres */</span>
+  <span class="p">},</span>
+  <span class="cm">/* Endereço Comercial, obrigatório */</span>
+  <span class="s2">&quot;BusinessAddress&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;ZipCode&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="cm">/* CEP, formato &#39;99999-999&#39;, máximo 9 caracteres */</span>
+    <span class="s2">&quot;Address&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="cm">/* Logradouro, máximo 100 caracteres */</span>
+    <span class="s2">&quot;Number&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="cm">/* Número, máximo 5 caracteres */</span>
+    <span class="s2">&quot;Complement&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="cm">/* Complemento, campo opcional, máximo 50 caracteres */</span>
+    <span class="s2">&quot;District&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="cm">/* Bairro, máximo 32 caracteres */</span>
+    <span class="s2">&quot;City&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="cm">/* Cidade, máximo 32 caracteres */</span>
+    <span class="s2">&quot;State&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span> <span class="cm">/* Estado/UF, máximo 4 caracteres */</span>
+  <span class="p">},</span>
+  <span class="cm">/* Informações transacionais, obrigatório */</span>
+  <span class="s2">&quot;TransactionalConfiguration&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;ProductionKey&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="cm">/* Chave de Produção, máximo 64 caracteres */</span>
+    <span class="s2">&quot;Mcc&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="cm">/* Código do MCC Cielo, máximo 4 caracteres */</span>
+    <span class="s2">&quot;PaymentMethods&quot;</span><span class="o">:</span> <span class="cm">/* Array de meios de pagamento habilitados */</span>
+    <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="cm">/* Nome do Produto e Bandeira, máximo 16 caracteres */</span>
+        <span class="s2">&quot;MaxInstallments&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span> <span class="cm">/* Número de parcelas (1 a 12) */</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;CvvRequired&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="cm">/* Obrigatoriedade do código de segurança, formato: true/false  */</span>
+    <span class="s2">&quot;IntegrationType&quot;</span><span class="o">:</span> <span class="mi">0</span> <span class="cm">/* Tipo de integração do EC */</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">Tabela <a class="reference internal" href="#integration-types-label"><span>Valores válidos para os tipos de integração</span></a>.</p>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">Definição do contrato de atualização de EC: <a href="https://adminhomolog.braspag.com.br/swagger/ui/index#!/Ec/Ec_Put" target="_blank">clique aqui</a>.</p>
+</div>
+</div>
+<div class="section" id="id1">
+<h4>Códigos de Retorno HTTP<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="41%" />
+<col width="59%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Código HTTP</th>
+<th class="head">Resultado</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>200 OK</td>
+<td>EC atualizado com sucesso</td>
+</tr>
+<tr class="row-odd"><td>400 Bad Request</td>
+<td>Contrato inválido / Erro de validação</td>
+</tr>
+<tr class="row-even"><td>401 Unauthorized</td>
+<td>Cliente não autenticado</td>
+</tr>
+<tr class="row-odd"><td>500 Internal Server Error</td>
+<td>Erro interno no servidor</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <div class="section" id="valores-validos-para-os-tipos-de-integracao">
-<h4>Valores válidos para os tipos de integração<a class="headerlink" href="#valores-validos-para-os-tipos-de-integracao" title="Permalink to this headline">¶</a></h4>
+<span id="integration-types-label"></span><h3>Valores válidos para os tipos de integração<a class="headerlink" href="#valores-validos-para-os-tipos-de-integracao" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="17%" />
@@ -288,25 +404,6 @@
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="section" id="atualizacao-de-ec">
-<h3>2. Atualização de EC<a class="headerlink" href="#atualizacao-de-ec" title="Permalink to this headline">¶</a></h3>
-<p>Atualiza as informações de um EC Cielo (WebService 3, Checkout Completo ou Loja Virtual) no ambiente Braspag.</p>
-<div class="section" id="formato-da-requisicao-put">
-<h4>Formato da requisição PUT<a class="headerlink" href="#formato-da-requisicao-put" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-HTTP"><div class="highlight"><pre><span class="nf">PUT</span> <span class="nn">https://{braspag_url}/api/v1/ec/?EcNumber={ecNumber}</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Connection</span><span class="o">:</span> <span class="l">keep-alive</span>
-<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer 974bd09d6992422183b970cc8343cc9a</span>
-<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
-<span class="na">Accept</span><span class="o">:</span> <span class="l">*/*</span>
-<span class="na">Accept-Encoding</span><span class="o">:</span> <span class="l">gzip, deflate</span>
-<span class="na">Accept-Language</span><span class="o">:</span> <span class="l">pt,en-US;q=0.8,en;q=0.6</span>
-
-<span class="p">{</span> <span class="p">}</span>
-</pre></div>
-</div>
-</div>
 </div>
 </div>
 </div>

@@ -81,6 +81,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#resource-owner-password-credentials">2. Resource Owner Password Credentials</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#tipos-de-escopo">Tipos de Escopo</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#validacao-de-token">Validação de Token</a></li>
 </ul>
 </li>
@@ -89,12 +90,18 @@
 <li class="toctree-l3"><a class="reference internal" href="adminapi.html#criacao-de-ec">1. Criação de EC</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="adminapi.html#formato-da-requisicao-post">Formato da requisição POST</a></li>
 <li class="toctree-l4"><a class="reference internal" href="adminapi.html#contrato-json-para-criacao-de-ec">Contrato JSON para criação de EC</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adminapi.html#codigos-de-retorno-http">Códigos de Retorno HTTP</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="adminapi.html#atualizacao-de-ec">2. Atualização de EC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="adminapi.html#atualizacao-de-ec">2. Atualização de EC</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adminapi.html#formato-da-requisicao-put">Formato da requisição PUT</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adminapi.html#contrato-json-para-atualizacao-de-ec">Contrato JSON para atualização de EC</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adminapi.html#id1">Códigos de Retorno HTTP</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="adminapi.html#atualizacao-de-estabelecimento-comercial">Atualização de Estabelecimento Comercial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="adminapi.html#valores-validos-para-os-tipos-de-integracao">3. Valores válidos para os tipos de integração</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -234,6 +241,35 @@ grant_type=password&amp;username=[Usuario]&amp;password=[Senha]&amp;scope=[Escop
 </pre></div>
 </div>
 </div>
+</div>
+<div class="section" id="tipos-de-escopo">
+<span id="scopes-label"></span><h2>Tipos de Escopo<a class="headerlink" href="#tipos-de-escopo" title="Permalink to this headline">¶</a></h2>
+<p>Os escopos definem o contexto de validade de um token de acesso. Escopos são <em>case-sensitive</em> e devem ser informados exatamente como escritos abaixo.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="79%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Escopo</th>
+<th class="head">Descrição</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>AdminCielo</td>
+<td>Single Sign-On de clientes do site Cielo para Admin</td>
+</tr>
+<tr class="row-odd"><td>AdminV2</td>
+<td>Single Sign-On para Admin versão 2.x</td>
+</tr>
+<tr class="row-even"><td>AdminV3</td>
+<td>Single Sign-On para Admin versão 3.x</td>
+</tr>
+<tr class="row-odd"><td>AdminApiEc</td>
+<td>API para gerenciamento de ECs Cielo</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="validacao-de-token">
 <h2>Validação de Token<a class="headerlink" href="#validacao-de-token" title="Permalink to this headline">¶</a></h2>

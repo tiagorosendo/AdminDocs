@@ -67,7 +67,7 @@ Contrato JSON para criação de EC
     },
     /* Endereço Comercial, obrigatório */
     "BusinessAddress": {
-      "ZipCode": "string", /* CEP, formato '99999-99', máximo 9 caracteres */
+      "ZipCode": "string", /* CEP, formato '99999-999', máximo 9 caracteres */
       "Address": "string", /* Logradouro, máximo 100 caracteres */
       "Number": "string", /* Número, máximo 5 caracteres */
       "Complement": "string", /* Complemento, campo opcional, máximo 50 caracteres */
@@ -88,9 +88,13 @@ Contrato JSON para criação de EC
         }
       ],
       "CvvRequired": true, /* Obrigatoriedade do código de segurança, formato: true/false  */
-      "IntegrationType": 0 /* Tipo de integração do EC (ver tabela abaixo) */
+      "IntegrationType": 0 /* Tipo de integração do EC */
     }
   }
+
+.. seealso::
+
+	Tabela :ref:`Valores válidos para os tipos de integração <integration-types-label>`.
 
 .. seealso::
 
@@ -99,21 +103,6 @@ Contrato JSON para criação de EC
 .. |swagger_post_ec| raw:: html
 
    <a href="https://adminhomolog.braspag.com.br/swagger/ui/index#!/Ec/Ec_Post" target="_blank">clique aqui</a>
-
-Valores válidos para os tipos de integração
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-========   =======================================
-Código     IntegrationType
-========   =======================================
-2          Checkout Simplificado
-3          Checkout Completo
-5          Loja Virtual Completa
-6          Webservice 3.0
-26         Checkout Simplificado e WebService 3.0
-36         Checkout Completo e WebService 3.0
-56         Loja Virtual Completa e WebService 3.0
-========   =======================================
 
 Códigos de Retorno HTTP
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -179,7 +168,7 @@ Contrato JSON para atualização de EC
     },
     /* Endereço Comercial, obrigatório */
     "BusinessAddress": {
-      "ZipCode": "string", /* CEP, formato '99999-99', máximo 9 caracteres */
+      "ZipCode": "string", /* CEP, formato '99999-999', máximo 9 caracteres */
       "Address": "string", /* Logradouro, máximo 100 caracteres */
       "Number": "string", /* Número, máximo 5 caracteres */
       "Complement": "string", /* Complemento, campo opcional, máximo 50 caracteres */
@@ -194,14 +183,18 @@ Contrato JSON para atualização de EC
       "PaymentMethods": /* Array de meios de pagamento habilitados */
       [
         {
-          "Name": "string", /* Nome do Produto/Bandeira, máximo 16 caracteres */
+          "Name": "string", /* Nome do Produto e Bandeira, máximo 16 caracteres */
           "MaxInstallments": "string" /* Número de parcelas (1 a 12) */
         }
       ],
       "CvvRequired": true, /* Obrigatoriedade do código de segurança, formato: true/false  */
-      "IntegrationType": 0 /* Tipo de integração do EC (ver tabela abaixo) */
+      "IntegrationType": 0 /* Tipo de integração do EC */
     }
   }
+
+.. seealso::
+
+	Tabela :ref:`Valores válidos para os tipos de integração <integration-types-label>`.
 
 .. seealso::
 
@@ -210,3 +203,33 @@ Contrato JSON para atualização de EC
 .. |swagger_put_ec| raw:: html
 
    <a href="https://adminhomolog.braspag.com.br/swagger/ui/index#!/Ec/Ec_Put" target="_blank">clique aqui</a>
+
+Códigos de Retorno HTTP
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+===========================   =======================================
+Código HTTP                   Resultado
+===========================   =======================================
+200 OK                        EC atualizado com sucesso
+400 Bad Request               Contrato inválido / Erro de validação
+401 Unauthorized              Cliente não autenticado
+500 Internal Server Error     Erro interno no servidor
+===========================   =======================================
+
+
+.. _integration-types-label:
+
+Valores válidos para os tipos de integração
+-------------------------------------------
+
+========   =======================================
+Código     IntegrationType
+========   =======================================
+2          Checkout Simplificado
+3          Checkout Completo
+5          Loja Virtual Completa
+6          Webservice 3.0
+26         Checkout Simplificado e WebService 3.0
+36         Checkout Completo e WebService 3.0
+56         Loja Virtual Completa e WebService 3.0
+========   =======================================
