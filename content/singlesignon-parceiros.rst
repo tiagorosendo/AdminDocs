@@ -64,3 +64,7 @@ Passo a passo para implementação:
 .. seealso::
 
   :ref:`Tabela de Escopos disponíveis <scopes-label>`
+
+.. warning::
+
+  Olá Barros!
