@@ -83,7 +83,7 @@ Contrato JSON para criação de EC
       "PaymentMethods": /* Array de meios de pagamento habilitados */
       [
         {
-          "Name": "string", /* Nome do Produto/Bandeira, máximo 16 caracteres */
+          "Name": "string", /* Valor válido para meio de pagamento, máximo 32 caracteres */
           "MaxInstallments": "string" /* Número de parcelas (1 a 12) */
         }
       ],
@@ -91,6 +91,10 @@ Contrato JSON para criação de EC
       "IntegrationType": 0 /* Tipo de integração do EC */
     }
   }
+
+.. seealso::
+
+	:ref:`Valores válidos para meios de pagamento <payment-methods-label>`
 
 .. seealso::
 
@@ -183,7 +187,7 @@ Contrato JSON para atualização de EC
       "PaymentMethods": /* Array de meios de pagamento habilitados */
       [
         {
-          "Name": "string", /* Nome do Produto e Bandeira, máximo 16 caracteres */
+          "Name": "string", /* Valor válido para meio de pagamento, máximo 32 caracteres */
           "MaxInstallments": "string" /* Número de parcelas (1 a 12) */
         }
       ],
@@ -191,6 +195,10 @@ Contrato JSON para atualização de EC
       "IntegrationType": 0 /* Tipo de integração do EC */
     }
   }
+
+.. seealso::
+
+	:ref:`Valores válidos para meios de pagamento <payment-methods-label>`
 
 .. seealso::
 
@@ -233,3 +241,27 @@ Código     IntegrationType
 36         Checkout Completo e WebService 3.0
 56         Loja Virtual Completa e WebService 3.0
 ========   =======================================
+
+.. _payment-methods-label:
+
+Valores válidos para meios de pagamento
+-------------------------------------------
+
+===============================   =======================================
+Valor Literal                     Meio de Pagamento
+===============================   =======================================
+*BoletoBradesco*                  Boleto Bradesco
+*BoletoBancoDoBrasil*             Boleto Banco do Brasil
+*OnlineDebitBancoDoBrasil*        Transferência Eletrônica Banco do Brasil
+*OnlineDebitBradesco*             Transferência Eletrônica Bradesco
+*DebitCardVisa*                   Visa Electron
+*DebitCardMaster*                 Mastercard Maestro
+*CreditCardVisa*                  Cartão de Crédito Visa
+*CreditCardMaster*                Cartão de Crédito Mastercard
+*CreditCardJcb*                   Cartão de Crédito JCB
+*CreditCardDiscover*              Cartão de Crédito Discover
+*CreditCardAmericanExpress*       Cartão de Crédito American Express
+*CreditCardElo*                   Cartão de Crédito ELO
+*CreditCardDiners*                Cartão de Crédito Diners
+*CreditCardAura*                  Cartão de Crédito Aura
+===============================   =======================================

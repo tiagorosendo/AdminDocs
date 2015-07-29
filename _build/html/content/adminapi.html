@@ -100,6 +100,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#valores-validos-para-os-tipos-de-integracao">Valores válidos para os tipos de integração</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#valores-validos-para-meios-de-pagamento">Valores válidos para meios de pagamento</a></li>
 </ul>
 </li>
 </ul>
@@ -217,7 +218,7 @@
     <span class="s2">&quot;PaymentMethods&quot;</span><span class="o">:</span> <span class="cm">/* Array de meios de pagamento habilitados */</span>
     <span class="p">[</span>
       <span class="p">{</span>
-        <span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="cm">/* Nome do Produto/Bandeira, máximo 16 caracteres */</span>
+        <span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="cm">/* Valor válido para meio de pagamento, máximo 32 caracteres */</span>
         <span class="s2">&quot;MaxInstallments&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span> <span class="cm">/* Número de parcelas (1 a 12) */</span>
       <span class="p">}</span>
     <span class="p">],</span>
@@ -226,6 +227,10 @@
   <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">Veja também</p>
+<p class="last"><a class="reference internal" href="#payment-methods-label"><span>Valores válidos para meios de pagamento</span></a></p>
 </div>
 <div class="admonition seealso">
 <p class="first admonition-title">Veja também</p>
@@ -325,7 +330,7 @@
     <span class="s2">&quot;PaymentMethods&quot;</span><span class="o">:</span> <span class="cm">/* Array de meios de pagamento habilitados */</span>
     <span class="p">[</span>
       <span class="p">{</span>
-        <span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="cm">/* Nome do Produto e Bandeira, máximo 16 caracteres */</span>
+        <span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="cm">/* Valor válido para meio de pagamento, máximo 32 caracteres */</span>
         <span class="s2">&quot;MaxInstallments&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span> <span class="cm">/* Número de parcelas (1 a 12) */</span>
       <span class="p">}</span>
     <span class="p">],</span>
@@ -334,6 +339,10 @@
   <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">Veja também</p>
+<p class="last"><a class="reference internal" href="#payment-methods-label"><span>Valores válidos para meios de pagamento</span></a></p>
 </div>
 <div class="admonition seealso">
 <p class="first admonition-title">Veja também</p>
@@ -406,6 +415,64 @@
 </tr>
 <tr class="row-even"><td>56</td>
 <td>Loja Virtual Completa e WebService 3.0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="valores-validos-para-meios-de-pagamento">
+<span id="payment-methods-label"></span><h3>Valores válidos para meios de pagamento<a class="headerlink" href="#valores-validos-para-meios-de-pagamento" title="Link permanente para este título">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="44%" />
+<col width="56%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Valor Literal</th>
+<th class="head">Meio de Pagamento</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><em>BoletoBradesco</em></td>
+<td>Boleto Bradesco</td>
+</tr>
+<tr class="row-odd"><td><em>BoletoBancoDoBrasil</em></td>
+<td>Boleto Banco do Brasil</td>
+</tr>
+<tr class="row-even"><td><em>OnlineDebitBancoDoBrasil</em></td>
+<td>Transferência Eletrônica Banco do Brasil</td>
+</tr>
+<tr class="row-odd"><td><em>OnlineDebitBradesco</em></td>
+<td>Transferência Eletrônica Bradesco</td>
+</tr>
+<tr class="row-even"><td><em>DebitCardVisa</em></td>
+<td>Visa Electron</td>
+</tr>
+<tr class="row-odd"><td><em>DebitCardMaster</em></td>
+<td>Mastercard Maestro</td>
+</tr>
+<tr class="row-even"><td><em>CreditCardVisa</em></td>
+<td>Cartão de Crédito Visa</td>
+</tr>
+<tr class="row-odd"><td><em>CreditCardMaster</em></td>
+<td>Cartão de Crédito Mastercard</td>
+</tr>
+<tr class="row-even"><td><em>CreditCardJcb</em></td>
+<td>Cartão de Crédito JCB</td>
+</tr>
+<tr class="row-odd"><td><em>CreditCardDiscover</em></td>
+<td>Cartão de Crédito Discover</td>
+</tr>
+<tr class="row-even"><td><em>CreditCardAmericanExpress</em></td>
+<td>Cartão de Crédito American Express</td>
+</tr>
+<tr class="row-odd"><td><em>CreditCardElo</em></td>
+<td>Cartão de Crédito ELO</td>
+</tr>
+<tr class="row-even"><td><em>CreditCardDiners</em></td>
+<td>Cartão de Crédito Diners</td>
+</tr>
+<tr class="row-odd"><td><em>CreditCardAura</em></td>
+<td>Cartão de Crédito Aura</td>
 </tr>
 </tbody>
 </table>
