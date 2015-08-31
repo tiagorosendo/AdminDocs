@@ -260,7 +260,7 @@ Valor Literal                     Meio de Pagamento
 *CreditCardMaster*                Cartão de Crédito Mastercard
 *CreditCardJcb*                   Cartão de Crédito JCB
 *CreditCardDiscover*              Cartão de Crédito Discover
-*CreditCardAmex*       Cartão de Crédito American Express
+*CreditCardAmex*                  Cartão de Crédito American Express
 *CreditCardElo*                   Cartão de Crédito ELO
 *CreditCardDiners*                Cartão de Crédito Diners
 *CreditCardAura*                  Cartão de Crédito Aura
