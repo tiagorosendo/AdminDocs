@@ -137,6 +137,7 @@ AdminCielo       Single Sign-On de clientes do site Cielo para Admin
 AdminV2          Single Sign-On para Admin versão 2.x
 AdminV3          Single Sign-On para Admin versão 3.x
 AdminApiEc       API para gerenciamento de ECs Cielo
+AdminReportApi   API de relatórios do Admin
 ==============   ====================================================
 
 Validação de Token
